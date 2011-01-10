@@ -1,0 +1,35 @@
+<html>
+<head> 
+        <title>Picardie Nature</title> 
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+	<link href="http://deco.picardie-nature.org/pix/style.css" media="all" rel="stylesheet" type="text/css" />
+</head> 
+<body>
+<style>
+	.partie { display: none; background-color: white; }
+	.soins { display: none; }
+	.protection { display: none; }
+	.erreur { color: red; }
+</style>
+<script src="http://deco.picardie-nature.org/jquery/js/jquery-1.4.2.min.js" language="javascript"></script>
+<div id="globcont">
+<div class="bloc-haut">
+	<div id="b-haut-1cont"> 
+		<div id="b-haut-1"> 
+			<div id="b-haut-1in"> 
+				<div id="b-haut-logo"> 
+					<img src="http://deco.picardie-nature.org/pix/logo_top.png"/> 
+				</div> 
+				<div id="b-haut-pancartes"> 
+					<img src="http://deco.picardie-nature.org/pix/pancartes_accueil.png"/> 
+				</div> 
+			</div> 
+		</div> 
+	</div> 
+	<div id="b-haut-2">&nbsp;</div> 
+</div>
+<div class="pn_main" style="min-height:600px;">
+{% block main %} - {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block main %}
+<h1>Inscription écovolontaire - enregistrement des documents</h1>
+<form method="post" action="/documents/">
+	<p class="directive">Adresse email</p>
+	<p class="valeur"><input type="text" name="email" value=""/></p>
+	<p class="directive">Mot de passe</p>
+	<p class="valeur"><input type="text" name="pwd" value=""/></p>
+	<input type="submit" value="Envoyer"/>
+</form>
+<p>Le mot de passe vous a été envoyé sur l'adresse e-mail fournie lors de l'inscription</p>
+{% endblock %}

@@ -1,0 +1,213 @@
+{% extends "main.html" %}
+{% block main %}
+	<form method="post" action="/inscription/">
+	<h1>Inscription écovolontaire - saison 2011</h1>
+	<span class="erreur">{{form.errors}}</span>
+	<div id="partie1" class="partie">
+	<h2>Identitée</h2>
+	<table>
+		<tr>
+			<td width="30%">
+				<p class="directive">{{form.nom.label}} <span class="erreur">{{form.nom.errors}}</span></p>
+				<p class="valeur">{{form.nom}}</p>
+			</td>
+			<td width="30%">
+				<p class="directive">{{form.prenom.label}} <span class="erreur">{{form.prenom.errors}}</span></p>
+				<p class="valeur">{{form.prenom}}</p>
+			</td>	
+			<td width="30%">
+				<p class="directive">Age <span class="erreur">{{form.age.errors}}</span></p>
+				<p class="valeur">{{form.age}}</p>
+			</td>
+
+		</tr>
+		<tr>
+			<td>
+				<p class="directive">{{form.email.label}} <span class="erreur">{{form.email.errors}}</span></p>
+				<p class="valeur">{{form.email}}</p>
+			</td>
+			<td>
+				<p class="directive">{{form.mobile.label}} <span class="erreur">{{form.mobile.errors}}</span></p>
+				<p class="valeur">{{form.mobile}}</p>
+			</td>
+			<td>
+				<p class="directive">{{form.sexe.label}} <span class="erreur">{{form.sexe.errors}}</span></p>
+				<p class="valeur">{{form.sexe}}</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p class="directive">Êtes vous adhérent à une autre association ?
+					<span class="erreur">{{form.adherent_autre_asso.errors}}</span></p>
+				<p class="valeur">{{form.adherent_autre_asso}}</p>
+			</td>
+
+		</tr>
+	</table>
+	<a href="javascript:suivant()">Passer à l'étape suivante</a>
+	</div>
+	<div id="partie2" class="partie">
+	<h2>Votre candidature porte sur :</h2>
+		<h3>
+			<input id="candidat-centre-soins" type="checkbox" />
+			<label for="candidat-centre-soins">le centre de soins</label>
+		</h3>
+		<h3>
+			<input id="candidat-protection" type="checkbox"  />
+			<label for="candidat-protection">la protection des phoques</label>
+		</h3>
+	<a href="javascript:precedent()">Étape précédente</a>
+	<a href="javascript:suivant()">Passer à l'étape suivante</a>
+	</div>
+	<div id="partie3" class="partie">
+		<div class="protection">
+		<h2>Vos disponibilités sur la mission de protection</h2>
+		{{form.dispo_18_06_au_25_06}} <label for="id_dispo_18_06_au_25_06">{{form.dispo_18_06_au_25_06.label}}</label><br/>
+		{{form.dispo_25_06_au_02_07}} <label for="id_dispo_25_06_au_02_07">{{form.dispo_25_06_au_02_07.label}}</label><br/>
+		{{form.dispo_02_07_au_09_07}} <label for="id_dispo_02_07_au_09_07">{{form.dispo_02_07_au_09_07.label}}</label><br/>
+		{{form.dispo_09_07_au_16_07}} <label for="id_dispo_09_07_au_16_07">{{form.dispo_09_07_au_16_07.label}}</label><br/>
+		{{form.dispo_16_07_au_23_07}} <label for="id_dispo_16_07_au_23_07">{{form.dispo_16_07_au_23_07.label}}</label><br/>
+		{{form.dispo_23_07_au_30_07}} <label for="id_dispo_23_07_au_30_07">{{form.dispo_23_07_au_30_07.label}}</label><br/>
+		{{form.dispo_30_07_au_06_08}} <label for="id_dispo_30_07_au_06_08">{{form.dispo_30_07_au_06_08.label}}</label><br/>
+		{{form.dispo_06_08_au_13_08}} <label for="id_dispo_06_08_au_13_08">{{form.dispo_06_08_au_13_08.label}}</label><br/>
+		{{form.dispo_13_08_au_20_08}} <label for="id_dispo_13_08_au_20_08">{{form.dispo_13_08_au_20_08.label}}</label><br/>
+		{{form.dispo_20_08_au_27_08}} <label for="id_dispo_20_08_au_27_08">{{form.dispo_20_08_au_27_08.label}}</label><br/>
+		{{form.dispo_27_08_au_03_09}} <label for="id_dispo_27_08_au_03_09">{{form.dispo_27_08_au_03_09.label}}</label><br/>
+		<p class="directive">{{form.duree_n_semaine.label}} <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
+		<p class="valeur">{{form.duree_n_semaine}}</p>
+		<p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
+		<p class="valeur">{{form.loc_baie}}</p>
+		</div>
+
+		<div class="soins">
+		<h2>Vos disponibilités au centre de soins</h2>
+		{{form.dispo_soins_28_05_au_04_06}} <label for="id_dispo_soins_28_05_au_04_06">{{form.dispo_soins_28_05_au_04_06.label}}</label><br/>
+		{{form.dispo_soins_04_06_au_11_06}} <label for="id_dispo_soins_04_06_au_11_06">{{form.dispo_soins_04_06_au_11_06.label}}</label><br/>
+		{{form.dispo_soins_11_06_au_18_06}} <label for="id_dispo_soins_11_06_au_18_06">{{form.dispo_soins_11_06_au_18_06.label}}</label><br/>
+		{{form.dispo_soins_18_06_au_25_06}} <label for="id_dispo_soins_18_06_au_25_06">{{form.dispo_soins_18_06_au_25_06.label}}</label><br/>
+		{{form.dispo_soins_25_06_au_02_07}} <label for="id_dispo_soins_25_06_au_02_07">{{form.dispo_soins_25_06_au_02_07.label}}</label><br/>
+		{{form.dispo_soins_02_07_au_09_07}} <label for="id_dispo_soins_02_07_au_09_07">{{form.dispo_soins_02_07_au_09_07.label}}</label><br/>
+		{{form.dispo_soins_09_07_au_16_07}} <label for="id_dispo_soins_09_07_au_16_07">{{form.dispo_soins_09_07_au_16_07.label}}</label><br/>
+		{{form.dispo_soins_16_07_au_23_07}} <label for="id_dispo_soins_16_07_au_23_07">{{form.dispo_soins_16_07_au_23_07.label}}</label><br/>
+		{{form.dispo_soins_23_07_au_30_07}} <label for="id_dispo_soins_23_07_au_30_07">{{form.dispo_soins_23_07_au_30_07.label}}</label><br/>
+		{{form.dispo_soins_30_07_au_06_08}} <label for="id_dispo_soins_30_07_au_06_08">{{form.dispo_soins_30_07_au_06_08.label}}</label><br/>
+		{{form.dispo_soins_06_08_au_13_08}} <label for="id_dispo_soins_06_08_au_13_08">{{form.dispo_soins_06_08_au_13_08.label}}</label><br/>
+		{{form.dispo_soins_13_08_au_20_08}} <label for="id_dispo_soins_13_08_au_20_08">{{form.dispo_soins_13_08_au_20_08.label}}</label><br/>
+		{{form.dispo_soins_20_08_au_27_08}} <label for="id_dispo_soins_20_08_au_27_08">{{form.dispo_soins_20_08_au_27_08.label}}</label><br/>
+		{{form.dispo_soins_27_08_au_03_09}} <label for="id_dispo_soins_27_08_au_03_09">{{form.dispo_soins_27_08_au_03_09.label}}</label><br/>
+		{{form.dispo_soins_03_09_au_10_09}} <label for="id_dispo_soins_03_09_au_10_09">{{form.dispo_soins_03_09_au_10_09.label}}</label><br/>
+		{{form.dispo_soins_10_09_au_17_09}} <label for="id_dispo_soins_10_09_au_17_09">{{form.dispo_soins_10_09_au_17_09.label}}</label><br/>
+		{{form.dispo_soins_17_09_au_24_09}} <label for="id_dispo_soins_17_09_au_24_09">{{form.dispo_soins_17_09_au_24_09.label}}</label><br/>
+		{{form.dispo_soins_24_09_au_01_10}} <label for="id_dispo_soins_24_09_au_01_10">{{form.dispo_soins_24_09_au_01_10.label}}</label><br/>
+		{{form.dispo_soins_01_10_au_08_10}} <label for="id_dispo_soins_01_10_au_08_10">{{form.dispo_soins_01_10_au_08_10.label}}</label><br/>
+		{{form.dispo_soins_08_10_au_15_10}} <label for="id_dispo_soins_08_10_au_15_10">{{form.dispo_soins_08_10_au_15_10.label}}</label><br/>
+		{{form.dispo_soins_15_10_au_22_10}} <label for="id_dispo_soins_15_10_au_22_10">{{form.dispo_soins_15_10_au_22_10.label}}</label><br/>
+		{{form.dispo_soins_22_10_au_29_10}} <label for="id_dispo_soins_22_10_au_29_10">{{form.dispo_soins_22_10_au_29_10.label}}</label><br/>
+		{{form.dispo_soins_29_10_au_05_11}} <label for="id_dispo_soins_29_10_au_05_11">{{form.dispo_soins_29_10_au_05_11.label}}</label><br/>
+		{{form.dispo_soins_05_11_au_12_11}} <label for="id_dispo_soins_05_11_au_12_11">{{form.dispo_soins_05_11_au_12_11.label}}</label><br/>
+		{{form.dispo_soins_12_11_au_19_11}} <label for="id_dispo_soins_12_11_au_19_11">{{form.dispo_soins_12_11_au_19_11.label}}</label><br/>
+		<p class="directive">{{form.dispo_soins_nb_semaine.label}}  <span class="erreur">{{form.dispo_soins_nb_semaine.errors}}</span></p>
+		<p class="valeur">{{form.dispo_soins_nb_semaine}}</p>
+		</div>
+		<a href="javascript:precedent()">Étape précédente</a>
+		<a href="javascript:suivant()">Passer à l'étape suivante</a>
+	</div>
+	<div id="partie4" class="partie">
+		<h2>Formation</h2>
+		<h3>Permis de conduire</h3>
+		<p class="valeur">
+			{{form.permis_b}}<label for="id_permis_b">{{form.permis_b.label}}</label>
+			{{form.vehicule}}<label for="id_vehicule">{{form.vehicule.label}}</label>
+		</p>
+		<h3>Permis bateau</h3>
+		<p class="valeur">
+			{{form.permis_mer}}<label for="id_permis_mer">{{form.permis_mer.label}}</label>
+			{{form.navig_regulierement}}<label for="id_navig_regulierement">{{form.navig_regulierement.label}}</label>
+		</p>
+		<h3>Navigation en Kayak</h3>
+		<p class="valeur">
+			{{form.kayak_mer}}<label for="id_kayak_mer">{{form.kayak_mer.label}}</label><br/>
+			{{form.kayak_niveau.label}} : {{form.kayak_niveau}} <span class="erreur">{{form.kayak.errors}}</span>
+		</p>
+		<h3>Formations aux premiers secours</h3>
+		<p>
+			{{form.afps}}<label for="id_afps">{{form.afps.label}}</label><br/>
+			{{form.psc1}}<label for="id_psc1">{{form.psc1.label}}</label><br/>
+			{{form.sauveteur_travail}}<label for="id_sauveteur_travail">{{form.sauveteur_travail.label}}</label><br/>
+			{{form.autre.label}} : {{form.autre}} <span class="erreur">{{form.autre.errors}}</span>
+		</p>
+		<a href="javascript:precedent()">Étape précédente</a>
+		<a href="javascript:suivant()">Passer à l'étape suivante</a>
+	</div>
+	<div id="partie5" class="partie">
+		<h3>Animation</h3>
+		<p>
+			{{form.bafa}}<label for="id_bafa">{{form.bafa.label}}</label><br/>
+			{{form.bapaat}}<label for="id_bapaat">{{form.bapaat.label}}</label><br/>
+			{{form.bpjeps}}<label for="id_bpjeps">{{form.bpjeps.label}}</label><br/>
+			{{form.guide_nature}}<label for="id_guide_nature">{{form.guide_nature.label}}</label><br/>
+			{{form.bts_gpn_opt_anim}}<label for="id_bts_gpn_opt_anim">{{form.bts_gpn_opt_anim.label}}</label>
+			{{form.autre_anim.label}} : {{form.autre_anim}} <span class="erreur">{{form.autre_anim.errors}}</span>
+
+		</p>
+		<h3>Compétences naturaliste</h3>
+		<p>
+			{{form.mam_marins}}<label for="id_mam_marins">{{form.mam_marins.label}}</label><br/>
+			{{form.oiseaux}}<label for="id_oiseaux">{{form.oiseaux.label}}</label><br/>
+			{{form.autre_competence_naturaliste.label}} : {{form.autre_competence_naturaliste}} 
+				<span class="erreur">{{form.autre_competence_naturaliste.errors}}</span>
+
+		</p>
+		<div class="soins">
+		<h3>Formation vétérinaire</h3>
+		<p>
+			{{form.auxiliaire_sante}}<label for="id_auxiliaire_sante">{{form.auxiliaire_sante.label}}</label><br/>
+			{{form.assistant_veterinaire}}<label for="id_assistant_veterinaire">{{form.assistant_veterinaire.label}}</label><br/>
+			{{form.soigneur_animalier}}<label for="id_soigneur_animalier">{{form.soigneur_animalier.label}}</label><br/>
+			{{form.autre_diplome_soins.label}} : {{form.autre_diplome_soins}}
+		</p>
+		</div>
+		<input type="submit" value="Enregistrer votre candidature"/>
+		<a href="javascript:precedent()">Étape précédente</a>
+		</form>
+	</div>
+</div>
+
+<script>
+var g_partie = 0;
+
+function precedent() {
+	if (g_partie > 1) {
+		jQuery("#partie"+g_partie).hide();
+		g_partie = g_partie - 1;
+		jQuery("#partie"+g_partie).show();
+	}
+}
+
+function suivant() {
+	var ok = false;
+	if (g_partie == 2) {
+		if (document.getElementById('candidat-centre-soins').checked) {
+			jQuery(".soins").show();
+			ok = true;
+		}
+		if (document.getElementById('candidat-protection').checked) {
+			jQuery(".protection").show();
+			ok = true;
+		}
+		if (!ok) {
+			alert('Vous devez choisir au moins une mission');
+			return;
+		}
+	}
+	jQuery("#partie"+g_partie).hide();
+	g_partie = g_partie + 1;
+	jQuery("#partie"+g_partie).show();
+}
+
+window.onload = function() {
+	jQuery("#partie1").show();
+	g_partie = 1;
+}
+</script>
+{% endblock %}

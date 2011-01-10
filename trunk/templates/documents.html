@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block main %}
+<h1>Inscription écovolontaire - enregistrement des documents</h1>
+<h2>{{fiche.nom}} {{fiche.prenom}} (<a href="/fermer/">Fermer</a>)</h2>
+<fieldset>
+	<legend>Ajouter un document</legend>
+	<form method="post" action="/documents/" enctype="multipart/form-data">
+		{{form.as_p}}
+		<input type="submit" value="Envoyer le fichier"/>
+	</form>
+	{{m}}
+	<br/>
+	Fichiers enregistrés : 
+	<ul>
+	{% for fichier in liste_fichiers %}
+		<li>{{fichier}}</li>
+	{% endfor %}
+	</ul>
+</fieldset>
+{% endblock %}
