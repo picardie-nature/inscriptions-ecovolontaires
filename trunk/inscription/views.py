@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from ecovolontaires import inscription
 from datetime import datetime
-from os import listdir,mkdir,path
+from os import listdir,mkdir,path,environ
 import commands
 
 def fermer(request):
@@ -25,7 +25,10 @@ def documents(request):
 	if not request.user.is_authenticated():
 		return render_to_response('login.html', {'login': None})
 	else:
-		chemin = 'data/%s'%(request.user.id)
+		if environ.has_key('DATA_PATH'):
+			chemin = '%s/%s'%(environ['DATA_PATH'], request.user.id)
+		else:
+			chemin = 'data/%s'%(request.user.id)
 		fiche = inscription.models.Fiche.objects.get(user_id=request.user.id)
 
 		if request.method == 'POST':
