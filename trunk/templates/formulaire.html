@@ -62,6 +62,8 @@
 	<div id="partie3" class="partie">
 		<div class="protection">
 		<h2>Vos disponibilités sur la mission de protection</h2>
+		<p>(Cochez les semaines où vous êtes disponible)</p>
+		{{form.dispo_11_06_au_18_06}} <label for="id_dispo_11_06_au_18_06">{{form.dispo_11_06_au_18_06.label}}</label><br/>
 		{{form.dispo_18_06_au_25_06}} <label for="id_dispo_18_06_au_25_06">{{form.dispo_18_06_au_25_06.label}}</label><br/>
 		{{form.dispo_25_06_au_02_07}} <label for="id_dispo_25_06_au_02_07">{{form.dispo_25_06_au_02_07.label}}</label><br/>
 		{{form.dispo_02_07_au_09_07}} <label for="id_dispo_02_07_au_09_07">{{form.dispo_02_07_au_09_07.label}}</label><br/>
@@ -73,14 +75,20 @@
 		{{form.dispo_13_08_au_20_08}} <label for="id_dispo_13_08_au_20_08">{{form.dispo_13_08_au_20_08.label}}</label><br/>
 		{{form.dispo_20_08_au_27_08}} <label for="id_dispo_20_08_au_27_08">{{form.dispo_20_08_au_27_08.label}}</label><br/>
 		{{form.dispo_27_08_au_03_09}} <label for="id_dispo_27_08_au_03_09">{{form.dispo_27_08_au_03_09.label}}</label><br/>
-		<p class="directive">{{form.duree_n_semaine.label}} <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
+		<p class="directive">Combien de semaines souhaitez vous rester <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
 		<p class="valeur">{{form.duree_n_semaine}}</p>
 		<p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
 		<p class="valeur">{{form.loc_baie}}</p>
+		<p>
+			{{form.ancien_participant}}
+			<label for="id_ancien_participant">J'ai déjà participé à la surveillance estivale des phoques de la Baie de Somme mise en place par Picardie Nature</label>
+		</p>
+		
 		</div>
 
 		<div class="soins">
 		<h2>Vos disponibilités au centre de soins</h2>
+		<p>(Cochez les semaines où vous êtes disponible)</p>
 		{{form.dispo_soins_28_05_au_04_06}} <label for="id_dispo_soins_28_05_au_04_06">{{form.dispo_soins_28_05_au_04_06.label}}</label><br/>
 		{{form.dispo_soins_04_06_au_11_06}} <label for="id_dispo_soins_04_06_au_11_06">{{form.dispo_soins_04_06_au_11_06.label}}</label><br/>
 		{{form.dispo_soins_11_06_au_18_06}} <label for="id_dispo_soins_11_06_au_18_06">{{form.dispo_soins_11_06_au_18_06.label}}</label><br/>
@@ -106,9 +114,11 @@
 		{{form.dispo_soins_29_10_au_05_11}} <label for="id_dispo_soins_29_10_au_05_11">{{form.dispo_soins_29_10_au_05_11.label}}</label><br/>
 		{{form.dispo_soins_05_11_au_12_11}} <label for="id_dispo_soins_05_11_au_12_11">{{form.dispo_soins_05_11_au_12_11.label}}</label><br/>
 		{{form.dispo_soins_12_11_au_19_11}} <label for="id_dispo_soins_12_11_au_19_11">{{form.dispo_soins_12_11_au_19_11.label}}</label><br/>
-		<p class="directive">{{form.dispo_soins_nb_semaine.label}}  <span class="erreur">{{form.dispo_soins_nb_semaine.errors}}</span></p>
-		<p class="valeur">{{form.dispo_soins_nb_semaine}}</p>
 		</div>
+		<p>
+			{{form.ancien_soigneur}}
+			<label for="id_ancien_soigneur">Je suis déjà venu(e) assister les soigneurs au Centre de sauvegarde de la faune sauvage de Picardie Nature</label>
+		</p>
 		<a href="javascript:precedent()">Étape précédente</a>
 		<a href="javascript:suivant()">Passer à l'étape suivante</a>
 	</div>
@@ -117,7 +127,7 @@
 		<h3>Permis de conduire</h3>
 		<p class="valeur">
 			{{form.permis_b}}<label for="id_permis_b">{{form.permis_b.label}}</label>
-			{{form.vehicule}}<label for="id_vehicule">{{form.vehicule.label}}</label>
+			{{form.vehicule}}<label for="id_vehicule">je possède un véhicule que j'aurais à disposition durant mon séjour</label>
 		</p>
 		<h3>Permis bateau</h3>
 		<p class="valeur">
