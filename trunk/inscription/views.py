@@ -80,7 +80,7 @@ def index(request):
 					"""Votre inscription est enregistrée,
 
 Pour la finaliser il vous reste a envoyer les documents administratifs.
-Rendez-vous sur : http://ecovolontaires.picardie-nature.org/
+Rendez-vous sur : http://ecovolontaires.picardie-nature.org/documents/
 Votre mot de passe est : %s
 
 
