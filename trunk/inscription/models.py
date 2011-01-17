@@ -4,6 +4,10 @@ from django.db import models
 from django import forms
 from datetime import datetime
 
+from django.contrib import admin
+class FicheAdmin(admin.ModelAdmin):
+	list_display = ['nom', 'prenom','date_inscription']
+
 class Fiche(models.Model):
 	CHOIX_SEXE = (
 		('H', 'Homme'),
@@ -102,6 +106,9 @@ class Fiche(models.Model):
 	soigneur_animalier = models.BooleanField('Soigneur animalier')
 	autre_diplome_soins = models.CharField('Autre', max_length=200, blank=True)
 	user_id = models.IntegerField("Id utilisateur", blank=True)
+
+	class Meta:
+		ordering = ['nom','prenom']
 
 class FicheForm(forms.ModelForm):
 	class Meta:
