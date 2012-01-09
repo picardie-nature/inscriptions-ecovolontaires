@@ -44,6 +44,12 @@
 
 		</tr>
 	</table>
+	<div class="info">
+		Attention : Vérifiez bien votre adresse e-mail : un mot de passe sera envoyé sur celle-ci pour vous permettre d'envoyer vos documents.
+	</div>
+	<div class="info">
+		Vous êtes déjà inscrit ? Pour envoyer les documents suivez ce <a href="documents">lien</a>.
+	</div>
 	<a href="javascript:suivant()">Passer à l'étape suivante</a>
 	</div>
 	<div id="partie2" class="partie">
@@ -60,6 +66,12 @@
 				{{form.participation_protection.label}}
 			</label>
 		</h3>
+		<div class="info">Les horaires des terrains de surveillance sont callées sur les horaires des marées basse, elles
+		sont donc variables d'une journée à l'autre, sur une amplitude horaire de 6h à 21h30.</div>
+		<div class="info">Les horaires des équipes des soigneurs sont 6h30-14h30 et 14h-22h, vous ferez partie de l'une
+		ou l'autre équipe</div>
+		<div class="info">Durant votre séjour vous serez logé et nourri en gîte collectif. Cela implique une participation
+		de votre part aux activitées communes (courses, repas...) et une tolérance de la vie en groupe (dortoirs).</div>
 	<a href="javascript:precedent()">Étape précédente</a>
 	<a href="javascript:suivant()">Passer à l'étape suivante</a>
 	</div>
@@ -182,11 +194,11 @@ function precedent() {
 function suivant() {
 	var ok = false;
 	if (g_partie == 2) {
-		if (document.getElementById('candidat-centre-soins').checked) {
+		if (document.getElementById('id_participation_csfs').checked) {
 			jQuery(".soins").show();
 			ok = true;
 		}
-		if (document.getElementById('candidat-protection').checked) {
+		if (document.getElementById('id_participation_protection').checked) {
 			jQuery(".protection").show();
 			ok = true;
 		}

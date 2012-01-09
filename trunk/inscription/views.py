@@ -12,7 +12,6 @@ def fermer(request):
 	logout(request)
 	return render_to_response('fermer.html', {'login': None})
 
-
 def documents(request):
 	msg = ''
 	form = None
@@ -76,7 +75,7 @@ def index(request):
 			login = fiche.email				
 			mot_de_passe = commands.getoutput('pwgen -1')
 			u = User.objects.create_user(login,login,mot_de_passe)
-			u.email_user('Inscription comme ecovolontaire',
+			u.email_user(u'Votre inscription comme écovolontaire',
 					"""Votre inscription est enregistrée,
 
 Pour la finaliser il vous reste a envoyer les documents administratifs.
@@ -88,6 +87,20 @@ Votre mot de passe est : %s
 			u.save()
 			fiche.user_id = u.id;
 			fiche.save()
+
+			admins = User.objects.filter(username='admin')
+			for admin in admins:
+				sujet = u'Nouvel écovolontaire';
+				msg = u"""Nouvel écovolontaire enregistré : %s %s
+
+Adresse email : %s
+Mot de passe : %s
+
+Pour le suivi http://ecovolontaires.picardie-nature.org/admin
+
+				""" % (fiche.nom, fiche.prenom, fiche.email, mot_de_passe)
+				msg.encode('u8')
+				admin.email_user(sujet, msg)
 			
 			return HttpResponseRedirect('/documents/')
 		else:
