@@ -37,7 +37,10 @@ class Fiche(models.Model):
 	age = models.IntegerField("Age", max_length=2)
 	email = models.EmailField("Adresse électronique")
 	mobile = models.CharField("Numéro de mobile", max_length=10)
-	
+
+	participation_csfs = models.BooleanField("Centre de sauvegarde")
+	participation_protection = models.BooleanField("Protection des phoques")
+
 	dispo_02_06_au_09_06 = models.BooleanField("Disponible du 02-06 au 09-06")
 	dispo_09_06_au_16_06 = models.BooleanField("Disponible du 09-06 au 16-06")
 	dispo_16_06_au_23_06 = models.BooleanField("Disponible du 16-06 au 23-06")
@@ -85,31 +88,6 @@ class Fiche(models.Model):
 	mam_marins = models.BooleanField("Mammifères marins")
 	oiseaux = models.BooleanField("Avifaune")
 	autre_competence_naturaliste = models.CharField("Autres compétences naturalistes", max_length=200, blank=True)
-	dispo_soins_28_05_au_04_06 = models.BooleanField('Disponible soins 28-05 au 04-06')
-	dispo_soins_04_06_au_11_06 = models.BooleanField('Disponible soins 04-06 au 11-06')
-	dispo_soins_11_06_au_18_06 = models.BooleanField('Disponible soins 11-06 au 18-06')
-	dispo_soins_18_06_au_25_06 = models.BooleanField('Disponible soins 18-06 au 25-06')
-	dispo_soins_25_06_au_02_07 = models.BooleanField('Disponible soins 25-06 au 02-07')
-	dispo_soins_02_07_au_09_07 = models.BooleanField('Disponible soins 02-07 au 09-07')
-	dispo_soins_09_07_au_16_07 = models.BooleanField('Disponible soins 09-07 au 16-07')
-	dispo_soins_16_07_au_23_07 = models.BooleanField('Disponible soins 16-07 au 23-07')
-	dispo_soins_23_07_au_30_07 = models.BooleanField('Disponible soins 23-07 au 30-07')
-	dispo_soins_30_07_au_06_08 = models.BooleanField('Disponible soins 30-07 au 06-08')
-	dispo_soins_06_08_au_13_08 = models.BooleanField('Disponible soins 06-08 au 13-08')
-	dispo_soins_13_08_au_20_08 = models.BooleanField('Disponible soins 13-08 au 20-08')
-	dispo_soins_20_08_au_27_08 = models.BooleanField('Disponible soins 20-08 au 27-08')
-	dispo_soins_27_08_au_03_09 = models.BooleanField('Disponible soins 27-08 au 03-09')
-	dispo_soins_03_09_au_10_09 = models.BooleanField('Disponible soins 03-09 au 10-09')
-	dispo_soins_10_09_au_17_09 = models.BooleanField('Disponible soins 10-09 au 17-09')
-	dispo_soins_17_09_au_24_09 = models.BooleanField('Disponible soins 17-09 au 24-09')
-	dispo_soins_24_09_au_01_10 = models.BooleanField('Disponible soins 24-09 au 01-10')
-	dispo_soins_01_10_au_08_10 = models.BooleanField('Disponible soins 01-10 au 08-10')
-	dispo_soins_08_10_au_15_10 = models.BooleanField('Disponible soins 08-10 au 15-10')
-	dispo_soins_15_10_au_22_10 = models.BooleanField('Disponible soins 15-10 au 22-10')
-	dispo_soins_22_10_au_29_10 = models.BooleanField('Disponible soins 22-10 au 29-10')
-	dispo_soins_29_10_au_05_11 = models.BooleanField('Disponible soins 29-10 au 05-11')
-	dispo_soins_05_11_au_12_11 = models.BooleanField('Disponible soins 05-11 au 12-11')
-	dispo_soins_12_11_au_19_11 = models.BooleanField('Disponible soins 12-11 au 19-11')
 	ancien_soigneur = models.BooleanField("Déjà été soigneur")
 	dispo_soins_nb_semaine = models.IntegerField("Nombre de semaines", blank=True)
 	veterinaire = models.BooleanField('Vétérinaire')
@@ -128,6 +106,4 @@ class FicheForm(forms.ModelForm):
 
 class UploadForm(forms.Form):
 	fic = forms.FileField()
-
-
 

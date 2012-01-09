@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 {% block main %}
 	<form method="post" action="/inscription/">
-	<h1>Inscription écovolontaire - saison 2011</h1>
+	<h1>Inscription écovolontaire - saison 2012</h1>
 	<span class="erreur">{{form.errors}}</span>
 	<div id="partie1" class="partie">
 	<h2>Identitée</h2>
@@ -49,12 +49,16 @@
 	<div id="partie2" class="partie">
 	<h2>Votre candidature porte sur :</h2>
 		<h3>
-			<input id="candidat-centre-soins" type="checkbox" />
-			<label for="candidat-centre-soins">le centre de soins</label>
+			{{form.participation_csfs}}
+			<label for="id_participation_csfs" type="checkbox">
+				{{form.participation_csfs.label}}
+			</label>
 		</h3>
 		<h3>
-			<input id="candidat-protection" type="checkbox"  />
-			<label for="candidat-protection">la protection des phoques</label>
+			{{form.participation_protection}}
+			<label for="id_participation_protection" type="checkbox">
+				{{form.participation_protection.label}}
+			</label>
 		</h3>
 	<a href="javascript:precedent()">Étape précédente</a>
 	<a href="javascript:suivant()">Passer à l'étape suivante</a>
@@ -96,35 +100,6 @@
 		
 		</div>
 
-		<div class="soins">
-		<h2>Vos disponibilités au centre de soins</h2>
-		<p>(Cochez les semaines où vous êtes disponible)</p>
-		{{form.dispo_soins_28_05_au_04_06}} <label for="id_dispo_soins_28_05_au_04_06">{{form.dispo_soins_28_05_au_04_06.label}}</label><br/>
-		{{form.dispo_soins_04_06_au_11_06}} <label for="id_dispo_soins_04_06_au_11_06">{{form.dispo_soins_04_06_au_11_06.label}}</label><br/>
-		{{form.dispo_soins_11_06_au_18_06}} <label for="id_dispo_soins_11_06_au_18_06">{{form.dispo_soins_11_06_au_18_06.label}}</label><br/>
-		{{form.dispo_soins_18_06_au_25_06}} <label for="id_dispo_soins_18_06_au_25_06">{{form.dispo_soins_18_06_au_25_06.label}}</label><br/>
-		{{form.dispo_soins_25_06_au_02_07}} <label for="id_dispo_soins_25_06_au_02_07">{{form.dispo_soins_25_06_au_02_07.label}}</label><br/>
-		{{form.dispo_soins_02_07_au_09_07}} <label for="id_dispo_soins_02_07_au_09_07">{{form.dispo_soins_02_07_au_09_07.label}}</label><br/>
-		{{form.dispo_soins_09_07_au_16_07}} <label for="id_dispo_soins_09_07_au_16_07">{{form.dispo_soins_09_07_au_16_07.label}}</label><br/>
-		{{form.dispo_soins_16_07_au_23_07}} <label for="id_dispo_soins_16_07_au_23_07">{{form.dispo_soins_16_07_au_23_07.label}}</label><br/>
-		{{form.dispo_soins_23_07_au_30_07}} <label for="id_dispo_soins_23_07_au_30_07">{{form.dispo_soins_23_07_au_30_07.label}}</label><br/>
-		{{form.dispo_soins_30_07_au_06_08}} <label for="id_dispo_soins_30_07_au_06_08">{{form.dispo_soins_30_07_au_06_08.label}}</label><br/>
-		{{form.dispo_soins_06_08_au_13_08}} <label for="id_dispo_soins_06_08_au_13_08">{{form.dispo_soins_06_08_au_13_08.label}}</label><br/>
-		{{form.dispo_soins_13_08_au_20_08}} <label for="id_dispo_soins_13_08_au_20_08">{{form.dispo_soins_13_08_au_20_08.label}}</label><br/>
-		{{form.dispo_soins_20_08_au_27_08}} <label for="id_dispo_soins_20_08_au_27_08">{{form.dispo_soins_20_08_au_27_08.label}}</label><br/>
-		{{form.dispo_soins_27_08_au_03_09}} <label for="id_dispo_soins_27_08_au_03_09">{{form.dispo_soins_27_08_au_03_09.label}}</label><br/>
-		{{form.dispo_soins_03_09_au_10_09}} <label for="id_dispo_soins_03_09_au_10_09">{{form.dispo_soins_03_09_au_10_09.label}}</label><br/>
-		{{form.dispo_soins_10_09_au_17_09}} <label for="id_dispo_soins_10_09_au_17_09">{{form.dispo_soins_10_09_au_17_09.label}}</label><br/>
-		{{form.dispo_soins_17_09_au_24_09}} <label for="id_dispo_soins_17_09_au_24_09">{{form.dispo_soins_17_09_au_24_09.label}}</label><br/>
-		{{form.dispo_soins_24_09_au_01_10}} <label for="id_dispo_soins_24_09_au_01_10">{{form.dispo_soins_24_09_au_01_10.label}}</label><br/>
-		{{form.dispo_soins_01_10_au_08_10}} <label for="id_dispo_soins_01_10_au_08_10">{{form.dispo_soins_01_10_au_08_10.label}}</label><br/>
-		{{form.dispo_soins_08_10_au_15_10}} <label for="id_dispo_soins_08_10_au_15_10">{{form.dispo_soins_08_10_au_15_10.label}}</label><br/>
-		{{form.dispo_soins_15_10_au_22_10}} <label for="id_dispo_soins_15_10_au_22_10">{{form.dispo_soins_15_10_au_22_10.label}}</label><br/>
-		{{form.dispo_soins_22_10_au_29_10}} <label for="id_dispo_soins_22_10_au_29_10">{{form.dispo_soins_22_10_au_29_10.label}}</label><br/>
-		{{form.dispo_soins_29_10_au_05_11}} <label for="id_dispo_soins_29_10_au_05_11">{{form.dispo_soins_29_10_au_05_11.label}}</label><br/>
-		{{form.dispo_soins_05_11_au_12_11}} <label for="id_dispo_soins_05_11_au_12_11">{{form.dispo_soins_05_11_au_12_11.label}}</label><br/>
-		{{form.dispo_soins_12_11_au_19_11}} <label for="id_dispo_soins_12_11_au_19_11">{{form.dispo_soins_12_11_au_19_11.label}}</label><br/>
-		</div>
 		<p>
 			{{form.ancien_soigneur}}
 			<label for="id_ancien_soigneur">Je suis déjà venu(e) assister les soigneurs au Centre de sauvegarde de la faune sauvage de Picardie Nature</label>
@@ -175,7 +150,7 @@
 			{{form.mam_marins}}<label for="id_mam_marins">{{form.mam_marins.label}}</label><br/>
 			{{form.oiseaux}}<label for="id_oiseaux">{{form.oiseaux.label}}</label><br/>
 			{{form.autre_competence_naturaliste.label}} : {{form.autre_competence_naturaliste}} 
-				<span class="erreur">{{form.autre_competence_naturaliste.errors}}</span>
+			<span class="erreur">{{form.autre_competence_naturaliste.errors}}</span>
 
 		</p>
 		<div class="soins">
