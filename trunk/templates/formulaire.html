@@ -4,6 +4,9 @@
 	<h1>Inscription écovolontaire - saison 2012</h1>
 	<span class="erreur">{{form.errors}}</span>
 	<div id="partie1" class="partie">
+	<div class="info">
+		Bienvenue sur le formulaire d'inscritpion à l'écovolontariat pour la surveillance estivale des phoques de la baie de Somme et pour le Centre de sauvegarde de la Faune sauvage de Picardie Nature.
+	</div>
 	<h2>Identitée</h2>
 	<table>
 		<tr>
@@ -76,6 +79,18 @@
 	<a href="javascript:suivant()">Passer à l'étape suivante</a>
 	</div>
 	<div id="partie3" class="partie">
+		<div class="info">
+			La surveillance estivale sera mise en place de début juin à début septembre. La participation est au minimum de 2 semaines consécutives;
+		</div>
+		<div class="info">
+			Le Centre de sauvegarde de la faune sauvage, sera mis en place en cas dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une seule semaine;
+		</div>
+		<div class="info">
+			La formation dispensée chaque samedi matin (dès 9h30) est obligatoire pour tous le jour de votre arrivée;
+		</div>
+		<div class="info">
+			En l'absence d'accueil de phoque au Centre de sauvegarde, il vous sera proposé d'intégrer les équipes de la surveillance estivale.
+		</div>
 		<div class="protection">
 		<h2>Vos disponibilités sur la mission de protection</h2>
 		<p>(Cochez les semaines où vous êtes disponible)</p>
@@ -103,8 +118,11 @@
 
 		<p class="directive">Combien de semaines souhaitez vous rester <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
 		<p class="valeur">{{form.duree_n_semaine}}</p>
+
+<!--
 		<p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
 		<p class="valeur">{{form.loc_baie}}</p>
+-->
 		<p>
 			{{form.ancien_surveillant}}
 			<label for="id_ancien_surveillant">J'ai déjà participé à la surveillance estivale des phoques de la Baie de Somme mise en place par Picardie Nature</label>
