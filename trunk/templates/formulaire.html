@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 {% block main %}
 	<form method="post" action="/inscription/">
-	<h1>Inscription écovolontaire - saison 2012</h1>
+	<h1>Inscription écovolontaire - saison 2013</h1>
 	<span class="erreur">{{form.errors}}</span>
 	<div id="partie1" class="partie">
 	<div class="info">
@@ -94,30 +94,31 @@
 		<div class="protection">
 		<h2>Vos disponibilités sur la mission de protection</h2>
 		<p>(Cochez les semaines où vous êtes disponible)</p>
-		{{form.dispo_02_06_au_09_06}} <label for="id_dispo_02_06_au_09_06">{{form.dispo_02_06_au_09_06.label}}</label><br/>
-		{{form.dispo_09_06_au_16_06}} <label for="id_dispo_09_06_au_16_06">{{form.dispo_09_06_au_16_06.label}}</label><br/>
-		{{form.dispo_16_06_au_23_06}} <label for="id_dispo_16_06_au_23_06">{{form.dispo_16_06_au_23_06.label}}</label><br/>
-		{{form.dispo_23_06_au_30_06}} <label for="id_dispo_23_06_au_30_06">{{form.dispo_23_06_au_30_06.label}}</label><br/>
-		{{form.dispo_30_06_au_07_07}} <label for="id_dispo_30_06_au_07_07">{{form.dispo_30_06_au_07_07.label}}</label><br/>
-		{{form.dispo_07_07_au_14_07}} <label for="id_dispo_07_07_au_14_07">{{form.dispo_07_07_au_14_07.label}}</label><br/>
-		{{form.dispo_14_07_au_21_07}} <label for="id_dispo_14_07_au_21_07">{{form.dispo_14_07_au_21_07.label}}</label><br/>
-		{{form.dispo_21_07_au_28_07}} <label for="id_dispo_21_07_au_28_07">{{form.dispo_21_07_au_28_07.label}}</label><br/>
-		{{form.dispo_28_07_au_04_08}} <label for="id_dispo_28_07_au_04_08">{{form.dispo_28_07_au_04_08.label}}</label><br/>
-		{{form.dispo_04_08_au_11_08}} <label for="id_dispo_04_08_au_11_08">{{form.dispo_04_08_au_11_08.label}}</label><br/>
-		{{form.dispo_11_08_au_18_08}} <label for="id_dispo_11_08_au_18_08">{{form.dispo_11_08_au_18_08.label}}</label><br/>
-		{{form.dispo_18_08_au_25_08}} <label for="id_dispo_18_08_au_25_08">{{form.dispo_18_08_au_25_08.label}}</label><br/>
-		{{form.dispo_25_08_au_01_09}} <label for="id_dispo_25_08_au_01_09">{{form.dispo_25_08_au_01_09.label}}</label><br/>
-		{{form.dispo_01_09_au_08_09}} <label for="id_dispo_01_09_au_08_09">{{form.dispo_01_09_au_08_09.label}}</label><br/>
-		{{form.dispo_08_09_au_15_09}} <label for="id_dispo_08_09_au_15_09">{{form.dispo_08_09_au_15_09.label}}</label><br/>
-		{{form.dispo_15_09_au_22_09}} <label for="id_dispo_15_09_au_22_09">{{form.dispo_15_09_au_22_09.label}}</label><br/>
-		{{form.dispo_22_09_au_29_09}} <label for="id_dispo_22_09_au_29_09">{{form.dispo_22_09_au_29_09.label}}</label><br/>
-		{{form.dispo_29_09_au_06_10}} <label for="id_dispo_29_09_au_06_10">{{form.dispo_29_09_au_06_10.label}}</label><br/>
-		{{form.dispo_06_10_au_13_10}} <label for="id_dispo_06_10_au_13_10">{{form.dispo_06_10_au_13_10.label}}</label><br/>
-		{{form.dispo_13_10_au_20_10}} <label for="id_dispo_13_10_au_20_10">{{form.dispo_13_10_au_20_10.label}}</label><br/>
-		{{form.dispo_20_10_au_27_10}} <label for="id_dispo_20_10_au_27_10">{{form.dispo_20_10_au_27_10.label}}</label><br/>
 
 		<p class="directive">Combien de semaines souhaitez vous rester <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
 		<p class="valeur">{{form.duree_n_semaine}}</p>
+		
+		{{form.dispo_08_06_au_15_06}} <label for=id_dispo_08_06_au_15_06>{{form.dispo_08_06_au_15_06.label}}</label><br/>
+		{{form.dispo_15_06_au_22_06}} <label for=id_dispo_15_06_au_22_06>{{form.dispo_15_06_au_22_06.label}}</label><br/>
+		{{form.dispo_22_06_au_29_06}} <label for=id_dispo_22_06_au_29_06>{{form.dispo_22_06_au_29_06.label}}</label><br/>
+		{{form.dispo_29_06_au_06_07}} <label for=id_dispo_29_06_au_06_07>{{form.dispo_29_06_au_06_07.label}}</label><br/>
+		{{form.dispo_06_07_au_13_07}} <label for=id_dispo_06_07_au_13_07>{{form.dispo_06_07_au_13_07.label}}</label><br/>
+		{{form.dispo_13_07_au_20_07}} <label for=id_dispo_13_07_au_20_07>{{form.dispo_13_07_au_20_07.label}}</label><br/>
+		{{form.dispo_20_07_au_27_07}} <label for=id_dispo_20_07_au_27_07>{{form.dispo_20_07_au_27_07.label}}</label><br/>
+		{{form.dispo_27_07_au_03_08}} <label for=id_dispo_27_07_au_03_08>{{form.dispo_27_07_au_03_08.label}}</label><br/>
+		{{form.dispo_03_08_au_10_08}} <label for=id_dispo_03_08_au_10_08>{{form.dispo_03_08_au_10_08.label}}</label><br/>
+		{{form.dispo_10_08_au_17_08}} <label for=id_dispo_10_08_au_17_08>{{form.dispo_10_08_au_17_08.label}}</label><br/>
+		{{form.dispo_17_08_au_24_08}} <label for=id_dispo_17_08_au_24_08>{{form.dispo_17_08_au_24_08.label}}</label><br/>
+		{{form.dispo_24_08_au_31_08}} <label for=id_dispo_24_08_au_31_08>{{form.dispo_24_08_au_31_08.label}}</label><br/>
+		{{form.dispo_31_08_au_07_09}} <label for=id_dispo_31_08_au_07_09>{{form.dispo_31_08_au_07_09.label}}</label><br/>
+		{{form.dispo_07_09_au_14_09}} <label for=id_dispo_07_09_au_14_09>{{form.dispo_07_09_au_14_09.label}}</label><br/>
+		{{form.dispo_14_09_au_21_09}} <label for=id_dispo_14_09_au_21_09>{{form.dispo_14_09_au_21_09.label}}</label><br/>
+		{{form.dispo_21_09_au_28_09}} <label for=id_dispo_21_09_au_28_09>{{form.dispo_21_09_au_28_09.label}}</label><br/>
+		{{form.dispo_28_09_au_05_10}} <label for=id_dispo_28_09_au_05_10>{{form.dispo_28_09_au_05_10.label}}</label><br/>
+		{{form.dispo_05_10_au_12_10}} <label for=id_dispo_05_10_au_12_10>{{form.dispo_05_10_au_12_10.label}}</label><br/>
+		{{form.dispo_12_10_au_19_10}} <label for=id_dispo_12_10_au_19_10>{{form.dispo_12_10_au_19_10.label}}</label><br/>
+		{{form.dispo_19_10_au_26_10}} <label for=id_dispo_19_10_au_26_10>{{form.dispo_19_10_au_26_10.label}}</label><br/>
+		{{form.dispo_26_10_au_02_11}} <label for=id_dispo_26_10_au_02_11>{{form.dispo_26_10_au_02_11.label}}</label><br/>
 
 <!--
 		<p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
@@ -192,10 +193,20 @@
 			{{form.autre_diplome_soins.label}} : {{form.autre_diplome_soins}}
 		</p>
 		</div>
+		<a href="javascript:precedent()">Étape précédente</a>
+		<a href="javascript:suivant()">Passer à l'étape suivante</a>
+	</div>
+	<div id="partie6" class="partie">
+		<h3>T-Shirt offert</h3>
+		<p>Tout écovolontaire participant à l'une de ces actions, se voit offrir un t-shirt souvenir de son écovolontariat.
+		Pour les préparer, merci de bien vouloir nous indiquer votre taille (S, M, L, XL ou XXL).</p>
+		<p>
+			{{form.tshirt.label}} : {{form.tshirt}}
+		</p>
 		<input type="submit" value="Enregistrer votre candidature"/>
 		<a href="javascript:precedent()">Étape précédente</a>
-		</form>
 	</div>
+	</form>
 </div>
 
 <script>
