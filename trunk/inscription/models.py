@@ -8,6 +8,7 @@ from django.contrib import admin
 class FicheAdmin(admin.ModelAdmin):
 	list_display = ['nom', 'prenom','date_inscription']
 
+
 class Fiche(models.Model):
 	CHOIX_SEXE = (
 		('H', 'Homme'),
@@ -107,6 +108,34 @@ class Fiche(models.Model):
 
 	class Meta:
 		ordering = ['nom','prenom']
+
+class CandidatRetenu(models.Model):
+	fiche = models.ForeignKey(Fiche)	
+	retenu_08_06_au_15_06 = models.BooleanField("Présent du 08-06 au 15-06")
+	retenu_15_06_au_22_06 = models.BooleanField("Présent du 15-06 au 22-06")
+	retenu_22_06_au_29_06 = models.BooleanField("Présent du 22-06 au 29-06")
+	retenu_29_06_au_06_07 = models.BooleanField("Présent du 29-06 au 06-06")
+	retenu_06_07_au_13_07 = models.BooleanField("Présent du 06-07 au 13-07")
+	retenu_13_07_au_20_07 = models.BooleanField("Présent du 13-07 au 20-07")
+	retenu_20_07_au_27_07 = models.BooleanField("Présent du 20-07 au 27-07")
+	retenu_27_07_au_03_08 = models.BooleanField("Présent du 27-07 au 03-07")
+	retenu_03_08_au_10_08 = models.BooleanField("Présent du 03-08 au 10-08")
+	retenu_10_08_au_17_08 = models.BooleanField("Présent du 10-08 au 17-08")
+	retenu_17_08_au_24_08 = models.BooleanField("Présent du 17-08 au 24-08")
+	retenu_24_08_au_31_08 = models.BooleanField("Présent du 24-08 au 31-08")
+	retenu_31_08_au_07_09 = models.BooleanField("Présent du 31-08 au 07-09")
+	retenu_07_09_au_14_09 = models.BooleanField("Présent du 07-09 au 14-09")
+	retenu_14_09_au_21_09 = models.BooleanField("Présent du 14-09 au 21-09")
+	retenu_21_09_au_28_09 = models.BooleanField("Présent du 21-09 au 28-09")
+	retenu_28_09_au_05_10 = models.BooleanField("Présent du 28-09 au 05-10 (centre de sauvegarde uniquement)")
+	retenu_05_10_au_12_10 = models.BooleanField("Présent du 05-10 au 12-10 (centre de sauvegarde uniquement)")
+	retenu_12_10_au_19_10 = models.BooleanField("Présent du 12-10 au 19-10 (centre de sauvegarde uniquement)")
+	retenu_19_10_au_26_10 = models.BooleanField("Présent du 19-10 au 26-10 (centre de sauvegarde uniquement)")
+	retenu_26_10_au_02_11 = models.BooleanField("Présent du 26-10 au 02-11 (centre de sauvegarde uniquement)")
+	date_validation = models.DateTimeField("Date validation", blank=True)
+	frais_inscription = models.IntegerField('Frais inscription') # 50 €
+	frais_hebergement = models.IntegerField('Frais hébergement, nourriture') # n_semaine * 20€
+	date_reception_paiement = models.DateTimeField("Date validation", blank=True)
 
 class FicheForm(forms.ModelForm):
 	class Meta:
