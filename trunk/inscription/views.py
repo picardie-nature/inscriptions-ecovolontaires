@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from ecovolontaires import inscription
-from datetime import datetime
+from datetime import datetime,date
 from os import listdir,mkdir,path,environ
 import commands
 
@@ -61,22 +61,23 @@ def documents(request):
 
 
 def index(request):
-	if request.method == 'POST':
-		fiche = inscription.models.Fiche()
-		f = inscription.models.FicheForm(request.POST, instance=fiche)
-		if f.is_valid():
-			fiche = f.save(commit=False)
-			fiche.date_inscription = datetime.now()
-			if fiche.dispo_soins_nb_semaine is None:
-				fiche.dispo_soins_nb_semaine = 0;
-			if fiche.duree_n_semaine is None:
-				fiche.duree_n_semaine = 0
+	if (date.today() < date(2013,3,11)):
+		if request.method == 'POST':
+			fiche = inscription.models.Fiche()
+			f = inscription.models.FicheForm(request.POST, instance=fiche)
+			if f.is_valid():
+				fiche = f.save(commit=False)
+				fiche.date_inscription = datetime.now()
+				if fiche.dispo_soins_nb_semaine is None:
+					fiche.dispo_soins_nb_semaine = 0;
+				if fiche.duree_n_semaine is None:
+					fiche.duree_n_semaine = 0
 
-			login = fiche.email				
-			mot_de_passe = commands.getoutput('pwgen -1')
-			u = User.objects.create_user(login,login,mot_de_passe)
-			u.email_user(u'Votre inscription comme écovolontaire',
-					"""Votre inscription est enregistrée,
+				login = fiche.email				
+				mot_de_passe = commands.getoutput('pwgen -1')
+				u = User.objects.create_user(login,login,mot_de_passe)
+				u.email_user(u'Votre inscription comme écovolontaire',
+						"""Votre inscription est enregistrée,
 
 Pour la finaliser il vous reste a envoyer les documents administratifs.
 Rendez-vous sur : http://ecovolontaires.picardie-nature.org/documents/
@@ -84,27 +85,29 @@ Votre mot de passe est : %s
 
 
 """ % mot_de_passe)
-			u.save()
-			fiche.user_id = u.id;
-			fiche.save()
+				u.save()
+				fiche.user_id = u.id;
+				fiche.save()
 
-			admins = User.objects.filter(username='admin')
-			for admin in admins:
-				sujet = u'Nouvel écovolontaire';
-				msg = u"""Nouvel écovolontaire enregistré : %s %s
+				admins = User.objects.filter(username='admin')
+				for admin in admins:
+					sujet = u'Nouvel écovolontaire';
+					msg = u"""Nouvel écovolontaire enregistré : %s %s
 
 Adresse email : %s
 Mot de passe : %s
 
 Pour le suivi http://ecovolontaires.picardie-nature.org/admin
 
-				""" % (fiche.nom, fiche.prenom, fiche.email, mot_de_passe)
-				msg.encode('u8')
-				admin.email_user(sujet, msg)
-			
-			return HttpResponseRedirect('/documents/')
-		else:
-			return render_to_response('formulaire.html', {'form': f})
+					""" % (fiche.nom, fiche.prenom, fiche.email, mot_de_passe)
+					msg.encode('u8')
+					admin.email_user(sujet, msg)
+				
+				return HttpResponseRedirect('/documents/')
+			else:
+				return render_to_response('formulaire.html', {'form': f})
 
-	f = inscription.models.FicheForm()
-	return render_to_response('formulaire.html', {'form': f})
+		f = inscription.models.FicheForm()
+		return render_to_response('formulaire.html', {'form': f})
+	else:
+		return render_to_response('inscription_fermee.tpl')

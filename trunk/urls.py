@@ -19,5 +19,5 @@ urlpatterns = patterns('',
     (r'^$', 'ecovolontaires.inscription.views.index'),
     (r'^inscription/', 'ecovolontaires.inscription.views.index'),
     (r'^fermer/', 'ecovolontaires.inscription.views.fermer'),
-    (r'^documents/', 'ecovolontaires.inscription.views.documents')
+    (r'^documents/', 'ecovolontaires.inscription.views.documents'),
 )
