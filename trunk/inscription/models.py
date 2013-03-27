@@ -4,12 +4,17 @@ from django.db import models
 from django import forms
 from datetime import datetime
 
+from django.db.models.signals import pre_save
 from django.contrib import admin
+
 class FicheAdmin(admin.ModelAdmin):
-	list_display = ['nom', 'prenom','date_inscription']
-
-
+	list_display = ['nom', 'prenom','date_inscription','mobile']
+	list_filter = ['nom', 'prenom']
+		
 class Fiche(models.Model):
+	def __unicode__(self):
+		return self.nom+' '+self.prenom
+
 	CHOIX_SEXE = (
 		('H', 'Homme'),
 		('F', 'Femme')
@@ -109,6 +114,9 @@ class Fiche(models.Model):
 	class Meta:
 		ordering = ['nom','prenom']
 
+class CandidatRetenuAdmin(admin.ModelAdmin):
+	pass
+
 class CandidatRetenu(models.Model):
 	fiche = models.ForeignKey(Fiche)	
 	retenu_08_06_au_15_06 = models.BooleanField("Présent du 08-06 au 15-06")
@@ -132,10 +140,23 @@ class CandidatRetenu(models.Model):
 	retenu_12_10_au_19_10 = models.BooleanField("Présent du 12-10 au 19-10 (centre de sauvegarde uniquement)")
 	retenu_19_10_au_26_10 = models.BooleanField("Présent du 19-10 au 26-10 (centre de sauvegarde uniquement)")
 	retenu_26_10_au_02_11 = models.BooleanField("Présent du 26-10 au 02-11 (centre de sauvegarde uniquement)")
-	date_validation = models.DateTimeField("Date validation", blank=True)
+	date_validation = models.DateTimeField("Date validation", blank=True,null=True)
 	frais_inscription = models.IntegerField('Frais inscription') # 50 €
 	frais_hebergement = models.IntegerField('Frais hébergement, nourriture') # n_semaine * 20€
-	date_reception_paiement = models.DateTimeField("Date validation", blank=True)
+	date_reception_paiement = models.DateTimeField("Date réception paiement", blank=True,null=True)
+
+def calcul_frais(sender, instance, **kwargs):
+	semaines = ['retenu_08_06_au_15_06', 'retenu_15_06_au_22_06', 'retenu_22_06_au_29_06', 'retenu_29_06_au_06_07', 'retenu_06_07_au_13_07', 'retenu_13_07_au_20_07', 'retenu_20_07_au_27_07', 'retenu_27_07_au_03_08', 'retenu_03_08_au_10_08', 'retenu_10_08_au_17_08', 'retenu_17_08_au_24_08', 'retenu_24_08_au_31_08', 'retenu_31_08_au_07_09', 'retenu_07_09_au_14_09', 'retenu_14_09_au_21_09', 'retenu_21_09_au_28_09', 'retenu_28_09_au_05_10', 'retenu_05_10_au_12_10', 'retenu_12_10_au_19_10', 'retenu_19_10_au_26_10', 'retenu_26_10_au_02_11']
+
+	instance.frais_inscription = 50
+	instance.frais_hebergement = 0
+	cout_semaine = 20
+
+	for semaine in semaines:
+		if getattr(instance, semaine):
+			instance.frais_hebergement += cout_semaine
+
+pre_save.connect(calcul_frais, sender=CandidatRetenu)
 
 class FicheForm(forms.ModelForm):
 	class Meta:

@@ -2,9 +2,11 @@ from django.conf.urls.defaults import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from ecovolontaires.inscription.models import Fiche,FicheAdmin
+from ecovolontaires.inscription.models import Fiche,FicheAdmin,CandidatRetenu,CandidatRetenuAdmin
+#from ecovolontaires.inscription import receivers
 
 admin.site.register(Fiche, FicheAdmin)
+admin.site.register(CandidatRetenu, CandidatRetenuAdmin)
 
 urlpatterns = patterns('',
     # Example:
