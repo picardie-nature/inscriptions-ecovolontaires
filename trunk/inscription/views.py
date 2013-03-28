@@ -12,6 +12,19 @@ def fermer(request):
 	logout(request)
 	return render_to_response('fermer.html', {'login': None})
 
+def confirmation(request):
+	if not request.user.is_authenticated():
+		if request.method == 'POST':
+			u = authenticate(username=request.POST['email'], password=request.POST['pwd'])
+			if u:
+				login(request, u)
+	
+	if not request.user.is_authenticated():
+		return render_to_response('confirmation.html', {'login': None})
+	
+	return render_to_response('confirmation.html', {'login': None})
+	
+
 def documents(request):
 	msg = ''
 	form = None

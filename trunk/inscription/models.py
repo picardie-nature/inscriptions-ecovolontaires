@@ -1,15 +1,16 @@
 # coding=UTF-8
-
 from django.db import models
 from django import forms
 from datetime import datetime
-
+from django.core.mail import send_mail
 from django.db.models.signals import pre_save
 from django.contrib import admin
+from datetime import datetime
+
+from django.contrib.auth.models import User
 
 class FicheAdmin(admin.ModelAdmin):
 	list_display = ['nom', 'prenom','date_inscription','mobile']
-	list_filter = ['nom', 'prenom']
 		
 class Fiche(models.Model):
 	def __unicode__(self):
@@ -114,7 +115,39 @@ class Fiche(models.Model):
 	class Meta:
 		ordering = ['nom','prenom']
 
+def envoyer_mail_confirmation(modeladmin, request, queryset):
+	for candidat in queryset:
+		u = User(candidat.fiche.user_id)
+		date = datetime.now()
+		send_mail(u"Confirmation de participation à l'écovolontariat phoques",u"""Confirmation de participation à l'écovolontariat phoques
+
+Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2013: du 8 juin au 31 août pour la surveillance estivale et dès le 8 juin pour le centre de sauvegarde de la faune sauvage.
+
+Merci de confirmer votre votre participation, avant le 7 avril minuit. Pour cela, veuillez:
+  - accepter le règlement intérieur,
+  - vous acquitter des frais de gestion de 50€ par personne,
+  - vous acquitter des frais de participation à l'hébergement et à la nourriture de 20€ par semaine,
+  - vérifier que vous êtes à jour de votre adhésion 2013, si ce n'est pas le cas: adhérez en ligne ! (http://dons.picardie-nature.org/)
+
+Pour ce faire rendez-vous à cette adresse http://ecovolontaires.picardie-nature.org/confirmation, et identifiez-vous.
+
+Rappels:
+  - Tous les candidats ayant confirmé seront considérés comme participants écovolontaires dès le 7 avril minuit. Dans le cas contraire, les places seront proposées à d'autres candidats.
+  - Les candidats sélectionnés qui ne souhaiteraient ou ne pourraient plus assurer leur période d'écovolontariat sont priés de prévenir de leur désistement au plus tôt.
+    - En cas de désistement signalé avant le 15 mai, le chèque de caution vous sera retourné. Passé cette date, ce dernier sera encaissé,
+    - En cas de désistement les frais de gestion ne seront pas remboursés,
+    - En cas de désistement, la participation aux frais d'hébergement et de nourriture de 20€ par semaine vous seront remboursés.
+""", 'support@picardie-nature.org', [candidat.fiche.email])
+
+
+envoyer_mail_confirmation.short_description = "Envoyer mails confirmation inscription"
+
+
 class CandidatRetenuAdmin(admin.ModelAdmin):
+	list_display = ['fiche','frais_hebergement','frais_inscription']
+	list_filter = ['annulation']
+	readonly_fields = ('date_validation','date_dernier_envoi_mail')
+	actions = [envoyer_mail_confirmation]
 	pass
 
 class CandidatRetenu(models.Model):
@@ -143,7 +176,9 @@ class CandidatRetenu(models.Model):
 	date_validation = models.DateTimeField("Date validation", blank=True,null=True)
 	frais_inscription = models.IntegerField('Frais inscription') # 50 €
 	frais_hebergement = models.IntegerField('Frais hébergement, nourriture') # n_semaine * 20€
+	date_dernier_envoi_mail = models.DateTimeField("Date envoi demande paiement", blank=True,null=True)
 	date_reception_paiement = models.DateTimeField("Date réception paiement", blank=True,null=True)
+	annulation = models.BooleanField("Inscription annulé")
 
 def calcul_frais(sender, instance, **kwargs):
 	semaines = ['retenu_08_06_au_15_06', 'retenu_15_06_au_22_06', 'retenu_22_06_au_29_06', 'retenu_29_06_au_06_07', 'retenu_06_07_au_13_07', 'retenu_13_07_au_20_07', 'retenu_20_07_au_27_07', 'retenu_27_07_au_03_08', 'retenu_03_08_au_10_08', 'retenu_10_08_au_17_08', 'retenu_17_08_au_24_08', 'retenu_24_08_au_31_08', 'retenu_31_08_au_07_09', 'retenu_07_09_au_14_09', 'retenu_14_09_au_21_09', 'retenu_21_09_au_28_09', 'retenu_28_09_au_05_10', 'retenu_05_10_au_12_10', 'retenu_12_10_au_19_10', 'retenu_19_10_au_26_10', 'retenu_26_10_au_02_11']
@@ -155,6 +190,10 @@ def calcul_frais(sender, instance, **kwargs):
 	for semaine in semaines:
 		if getattr(instance, semaine):
 			instance.frais_hebergement += cout_semaine
+	
+	if not instance.date_validation:
+		instance.date_validation = datetime.now()
+		
 
 pre_save.connect(calcul_frais, sender=CandidatRetenu)
 

@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block main %}
+<h1>Inscription écovolontaire - confirmation</h1>
+<form method="post" action="/confirmation/">
+        <p class="directive">Adresse email</p>
+        <p class="valeur"><input type="text" name="email" value=""/></p>
+        <p class="directive">Mot de passe</p>
+        <p class="valeur"><input type="text" name="pwd" value=""/></p>
+        <input type="submit" value="Envoyer"/>
+</form>
+
+
+{% endblock %}
