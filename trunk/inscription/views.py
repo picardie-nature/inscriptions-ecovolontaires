@@ -7,12 +7,14 @@ from ecovolontaires import inscription
 from datetime import datetime,date
 from os import listdir,mkdir,path,environ
 import commands
+from django.core.mail import send_mail
 
 def fermer(request):
 	logout(request)
 	return render_to_response('fermer.html', {'login': None})
 
 def confirmation(request):
+	u = None
 	if not request.user.is_authenticated():
 		if request.method == 'POST':
 			u = authenticate(username=request.POST['email'], password=request.POST['pwd'])
@@ -22,8 +24,27 @@ def confirmation(request):
 	if not request.user.is_authenticated():
 		return render_to_response('confirmation.html', {'login': None})
 	
-	return render_to_response('confirmation.html', {'login': None})
+	# ici on est connecté
+	fiche = inscription.models.Fiche.objects.get(user_id=request.user.id)
+	candidat = inscription.models.CandidatRetenu.objects.get(fiche=fiche.id)
+	return render_to_response('confirmation.html', {'login': True, 'fiche': fiche, 'candidat': candidat})
 	
+def mot_de_passe(request):
+	msg = ""
+	if request.method == "POST":
+		u = User.objects.get(username=request.POST['email'])
+		if u:
+			mot_de_passe = commands.getoutput('pwgen -1')
+			u.set_password(mot_de_passe)
+			u.save()
+			send_mail(u"Votre nouveau mot de passe","""Bonjour,
+
+Votre nouveau mot de passe est : %s
+
+""" % (mot_de_passe), 'support@picardie-nature.org', [u.email])
+		msg = "Nouveau mot de passe envoyé"
+	
+	return render_to_response('mot_de_passe.html', {'msg': msg})
 
 def documents(request):
 	msg = ''

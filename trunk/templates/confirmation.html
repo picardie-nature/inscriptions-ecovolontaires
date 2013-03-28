@@ -1,13 +1,101 @@
 {% extends "main.html" %}
 {% block main %}
 <h1>Inscription écovolontaire - confirmation</h1>
-<form method="post" action="/confirmation/">
-        <p class="directive">Adresse email</p>
-        <p class="valeur"><input type="text" name="email" value=""/></p>
-        <p class="directive">Mot de passe</p>
-        <p class="valeur"><input type="text" name="pwd" value=""/></p>
-        <input type="submit" value="Envoyer"/>
-</form>
+{% if not login %}
+	<form method="post" action="/confirmation/">
+		<p class="directive">Adresse email</p>
+		<p class="valeur"><input type="text" name="email" value=""/></p>
+		<p class="directive">Mot de passe</p>
+		<p class="valeur"><input type="text" name="pwd" value=""/></p>
+		<input type="submit" value="Envoyer"/>
+	</form>
+{% else %}
+	<a href="/fermer/">Fermer</a>
+	<hr/>
+	Date retenues :
 
+	{% if candidat.retenu_08_06_au_15_06 > 0 %} 
+		Présent du 08-06 au 15-06
+	{% endif %}
+	
+	{% if candidat.retenu_15_06_au_22_06 > 0 %}
+		Présent du 15-06 au 22-06
+	{% endif %}
 
+	{% if candidat.retenu_22_06_au_29_06 > 0 %}
+		Présent du 22-06 au 29-06
+	{% endif %}
+
+	{% if candidat.retenu_29_06_au_06_07 > 0 %}
+		Présent du 29-06 au 06-06
+	{% endif %}
+
+	{% if candidat.retenu_06_07_au_13_07 > 0 %}
+		Présent du 06-07 au 13-07
+	{% endif %}
+
+	{% if candidat.retenu_13_07_au_20_07 > 0 %}
+		Présent du 13-07 au 20-07
+	{% endif %}
+
+	{% if candidat.retenu_20_07_au_27_07 > 0 %}
+		Présent du 20-07 au 27-07
+	{% endif %}
+
+	{% if candidat.retenu_27_07_au_03_08 > 0 %}
+		Présent du 27-07 au 03-07
+	{% endif %}
+
+	{% if candidat.retenu_03_08_au_10_08 > 0 %}
+		Présent du 03-08 au 10-08
+	{% endif %}
+
+	{% if candidat.retenu_10_08_au_17_08 > 0 %}
+		Présent du 10-08 au 17-08
+	{% endif %}
+
+	{% if candidat.retenu_17_08_au_24_08 > 0 %}
+		Présent du 17-08 au 24-08
+	{% endif %}
+
+	{% if candidat.retenu_24_08_au_31_08 > 0 %}
+		Présent du 24-08 au 31-08
+	{% endif %}
+
+	{% if candidat.retenu_31_08_au_07_09 > 0 %}
+		Présent du 31-08 au 07-09
+	{% endif %}
+
+	{% if candidat.retenu_07_09_au_14_09 > 0 %}
+		Présent du 07-09 au 14-09
+	{% endif %}
+
+	{% if candidat.retenu_14_09_au_21_09 > 0 %}
+		Présent du 14-09 au 21-09
+	{% endif %}
+
+	{% if candidat.retenu_21_09_au_28_09 > 0 %}
+		Présent du 21-09 au 28-09
+	{% endif %}
+
+	{% if candidat.retenu_28_09_au_05_10 > 0 %}
+		Présent du 28-09 au 05-10
+	{% endif %}
+
+	{% if candidat.retenu_05_10_au_12_10 > 0 %}
+		Présent du 05-10 au 12-10
+	{% endif %}
+
+	{% if candidat.retenu_12_10_au_19_10 > 0 %}
+		Présent du 12-10 au 19-10
+	{% endif %}
+
+	{% if candidat.retenu_19_10_au_26_10 > 0 %}
+		Présent du 19-10 au 26-10
+	{% endif %}
+
+	{% if candidat.retenu_26_10_au_02_11 > 0 %}
+		Présent du 26-10 au 02-11
+	{% endif %}
+{% endif %}
 {% endblock %}

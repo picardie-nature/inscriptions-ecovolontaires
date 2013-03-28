@@ -1,0 +1,7 @@
+{% extends "main.html" %}
+{% block main %}
+<form method="post" action="/mot_de_passe/">
+	Votre adresse email : <input type="text" name="email"> <input type="submit" value="Demander un nouveau mot de passe"/>
+</form>
+<div style="text-align: center;">{{msg}}</div>
+{% endblock %}
