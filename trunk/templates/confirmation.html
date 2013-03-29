@@ -9,6 +9,8 @@
 		<p class="valeur"><input type="text" name="pwd" value=""/></p>
 		<input type="submit" value="Envoyer"/>
 	</form>
+	<br/>
+	<a href="/mot_de_passe/">Mot de passe perdu ?</a>
 {% else %}
 	<a href="/fermer/">Fermer</a>
 	<p>Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2013: du 8 juin au 31 août pour la surveillance estivale et dès le 8 juin pour le centre de sauvegarde de la faune sauvage.</p>
@@ -105,31 +107,67 @@
 	<p>Participation hébergement : <b>{{candidat.frais_hebergement}} €</b></p>
 	<p>Total a régler : <b>{{total}} €</b>
 
-	<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> -->
-	<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-		Cliquez sur le bouton "Payer" pour procéder au paiement
-		<input type="hidden" name="cmd" value="_cart">
-		<input type="hidden" name="upload" value="1">
-		<!-- <input type="hidden" name="business" value="christophe.hosten@picardie-nature.org"> -->
-		<input type="hidden" name="business" value="nicolas-facilitator@web-fr.org">
-		<input type="hidden" name="item_name_1" value="Participation hebergement">
-		<input type="hidden" name="item_number_1" value="ph_{{candidat.id}}">
-		<input type="hidden" name="amount_1" value="{{candidat.frais_hebergement}}">
-		{% if candidat.frais_inscription > 0 %}
-		<input type="hidden" name="item_name_2" value="Frais inscription">
-		<input type="hidden" name="item_number_2" value="fi_{{candidat.id}}">
-		<input type="hidden" name="amount_2" value="{{candidat.frais_inscription}}">
-		{% endif %}
-		<!-- <input type="hidden" name="no_shipping" value="2">
-		<input type="hidden" name="no_note" value="1"> -->
-		<input type="hidden" name="currency_code" value="EUR">
-		<input type="hidden" name="tax" value="0">
-		<input type="hidden" name="email" value="{{fiche.email}}">
-		<input type="hidden" name="last_name" value="{{fiche.nom}}">
-		<input type="hidden" name="first_name" value="{{fiche.prenom}}">
-		<input type="hidden" name="return" value="http://ecovolontaires.picardie-nature.org/confirmation_fin"/>
-		<input type="submit" value="Payer">
-	</form>
+	<h2>Réglement intérieur</h2>
+	Pour continuer vous devez confirmer que vous avez pris connaissance du <a href="http://dl.picardie-nature.org/file.php?h=R3829e445b97eca13f72fb658e930b763">réglement intérieur</a>.<br/>
+	<input type="checkbox" id="riok" onclick="javascript:ri();">
+	<label for="riok">cochez la case pour indiquer que vous avez pris connaissance du <a href="http://dl.picardie-nature.org/file.php?h=R3829e445b97eca13f72fb658e930b763">réglement</a> et que vous l'acceptez.</a>
+
+	<style>
+		#ri_ok_only { display: none; }
+	</style>
+	<script>
+		function ri() {
+			var cbox = document.getElementById('riok');
+			var div = document.getElementById('ri_ok_only');
+			if (cbox.checked) {
+				div.style.display = 'block';
+			} else {
+				div.style.display = 'none';
+			}
+		}
+	</script>
+	<div id="ri_ok_only">
+		<h2>Réglement</h2>
+		<h3>Par paypal - carte bancaire</h3>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<!--		<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post"> -->
+			Cliquez sur le bouton "Payer" pour procéder au paiement
+			<input type="hidden" name="cmd" value="_cart">
+			<input type="hidden" name="upload" value="1">
+			<input type="hidden" name="business" value="christophe.hosten@picardie-nature.org">
+<!--			<input type="hidden" name="business" value="nicolas-facilitator@web-fr.org"> -->
+			<input type="hidden" name="item_name_1" value="Participation hebergement">
+			<input type="hidden" name="item_number_1" value="ph_{{fiche.user_id}}">
+			<input type="hidden" name="amount_1" value="{{candidat.frais_hebergement}}">
+			{% if candidat.frais_inscription > 0 %}
+			<input type="hidden" name="item_name_2" value="Frais inscription">
+			<input type="hidden" name="item_number_2" value="fi_{{fiche.user_id}}">
+			<input type="hidden" name="amount_2" value="{{candidat.frais_inscription}}">
+			{% endif %}
+			<!-- <input type="hidden" name="no_shipping" value="2">
+			<input type="hidden" name="no_note" value="1"> -->
+			<input type="hidden" name="currency_code" value="EUR">
+			<input type="hidden" name="tax" value="0">
+			<input type="hidden" name="email" value="{{fiche.email}}">
+			<input type="hidden" name="last_name" value="{{fiche.nom}}">
+			<input type="hidden" name="first_name" value="{{fiche.prenom}}">
+			<input type="hidden" name="return" value="http://ecovolontaires.picardie-nature.org/confirmation_fin"/>
+			<input type="submit" value="Payer">
+		</form>
+		<h3>Par chèque</h3>
+		<p>Le chèque doit être libellé à l'ordre de <b>Picardie Nature</b>, veuillez indiquer au dos, vos prénom et nom et indiquer "ecovolontariat phoques". </p>
+
+		<p>Il doit être envoyé à :</p>
+		<address>
+		PICARDIE NATURE<br/>
+		ECOVOLONTARIAT PHOQUES<br/>
+		1 rue de CROŶ<br/>
+		BP 70010<br/>
+		80097 Amiens cedex 3<br/>
+		</address>
+
+		<a href="/confirmation_fin/">Cliquez ici pour indiquer que vous avez envoyé votre réglement.</a>
+	</div>
 
 	
 {% endif %}

@@ -118,7 +118,8 @@ class Fiche(models.Model):
 def envoyer_mail_confirmation(modeladmin, request, queryset):
 	for candidat in queryset:
 		u = User(candidat.fiche.user_id)
-		date = datetime.now()
+		candidat.date_dernier_envoi_mail = datetime.now()
+		candidat.save()
 		send_mail(u"Confirmation de participation à l'écovolontariat phoques",u"""Confirmation de participation à l'écovolontariat phoques
 
 Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2013: du 8 juin au 31 août pour la surveillance estivale et dès le 8 juin pour le centre de sauvegarde de la faune sauvage.
@@ -144,7 +145,7 @@ envoyer_mail_confirmation.short_description = "Envoyer mails confirmation inscri
 
 
 class CandidatRetenuAdmin(admin.ModelAdmin):
-	list_display = ['fiche','frais_hebergement','frais_inscription']
+	list_display = ['fiche','frais_hebergement','frais_inscription','date_dernier_envoi_mail','date_dernier_envoi_mail','date_confirmation','date_reception_paiement']
 	list_filter = ['annulation','adhesion']
 	readonly_fields = ('date_validation','date_dernier_envoi_mail','date_confirmation')
 	actions = [envoyer_mail_confirmation]
@@ -184,7 +185,7 @@ class CandidatRetenu(models.Model):
 	frais_hebergement = models.IntegerField('Frais hébergement, nourriture') # n_semaine * 20€
 	date_dernier_envoi_mail = models.DateTimeField("Date envoi demande paiement", blank=True,null=True)
 	date_reception_paiement = models.DateTimeField("Date réception paiement", blank=True,null=True)
-	annulation = models.BooleanField("Inscription annulé")
+	annulation = models.BooleanField("Inscription annulée")
 	adhesion = models.BooleanField("Adhésion confirmée")
 
 def calcul_frais(sender, instance, **kwargs):

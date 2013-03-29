@@ -14,7 +14,18 @@ def fermer(request):
 	return render_to_response('fermer.html', {'login': None})
 
 def confirmation_fin(request):
+	if not request.user.is_authenticated():
+		return render_to_response('confirmation.html', {'login': None})
+	try:
+		fiche = inscription.models.Fiche.objects.get(user_id=request.user.id)
+		candidat = inscription.models.CandidatRetenu.objects.get(fiche=fiche.id)
+	except:
+		return render_to_response('pas_retenu.html')
+
+	candidat.date_confirmation = datetime.now()
+	candidat.save()
 	return render_to_response('confirmation_fin.html')
+
 
 def confirmation(request):
 	u = None
@@ -109,7 +120,7 @@ def documents(request):
 
 
 def index(request):
-	if (date.today() < date(2013,3,11)):
+	if (date.today() < date(2014,3,11)):
 		if request.method == 'POST':
 			fiche = inscription.models.Fiche()
 			f = inscription.models.FicheForm(request.POST, instance=fiche)
