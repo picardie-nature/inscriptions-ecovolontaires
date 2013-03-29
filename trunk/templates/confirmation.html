@@ -14,7 +14,7 @@
 	<p>Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2013: du 8 juin au 31 août pour la surveillance estivale et dès le 8 juin pour le centre de sauvegarde de la faune sauvage.</p>
 
 	<hr/>
-	Date retenues <br/>
+	<h2>Dates retenues</h2>
 
 	{% if candidat.retenu_08_06_au_15_06 %} 
 		Présent du 08-06 au 15-06 pour la mission <i>{{candidat.retenu_08_06_au_15_06}}</i><br/>
@@ -29,7 +29,7 @@
 	{% endif %}
 
 	{% if candidat.retenu_29_06_au_06_07 %}
-		Présent du 29-06 au 06-06 pour la mission <i>{{candidat.retenu_29_06_au_06_07}}</i><br/>
+		Présent du 29-06 au 06-07 pour la mission <i>{{candidat.retenu_29_06_au_06_07}}</i><br/>
 	{% endif %}
 
 	{% if candidat.retenu_06_07_au_13_07 %}
@@ -45,7 +45,7 @@
 	{% endif %}
 
 	{% if candidat.retenu_27_07_au_03_08 %}
-		Présent du 27-07 au 03-07 pour la mission <i>{{candidat.retenu_27_07_au_03_08}}</i><br/>
+		Présent du 27-07 au 03-08 pour la mission <i>{{candidat.retenu_27_07_au_03_08}}</i><br/>
 	{% endif %}
 
 	{% if candidat.retenu_03_08_au_10_08 %}
@@ -99,5 +99,38 @@
 	{% if candidat.retenu_26_10_au_02_11 %}
 		Présent du 26-10 au 02-11 pour la mission <i>{{candidat.retenu_26_10_au_02_11}}</i><br/>
 	{% endif %}
+
+	<h2>Frais d'inscriptions et participation</h2>
+	<p>Frais d'inscription : <b>{{candidat.frais_inscription}} €</b></p>
+	<p>Participation hébergement : <b>{{candidat.frais_hebergement}} €</b></p>
+	<p>Total a régler : <b>{{total}} €</b>
+
+	<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> -->
+	<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+		Cliquez sur le bouton "Payer" pour procéder au paiement
+		<input type="hidden" name="cmd" value="_cart">
+		<input type="hidden" name="upload" value="1">
+		<!-- <input type="hidden" name="business" value="christophe.hosten@picardie-nature.org"> -->
+		<input type="hidden" name="business" value="nicolas-facilitator@web-fr.org">
+		<input type="hidden" name="item_name_1" value="Participation hebergement">
+		<input type="hidden" name="item_number_1" value="ph_{{candidat.id}}">
+		<input type="hidden" name="amount_1" value="{{candidat.frais_hebergement}}">
+		{% if candidat.frais_inscription > 0 %}
+		<input type="hidden" name="item_name_2" value="Frais inscription">
+		<input type="hidden" name="item_number_2" value="fi_{{candidat.id}}">
+		<input type="hidden" name="amount_2" value="{{candidat.frais_inscription}}">
+		{% endif %}
+		<!-- <input type="hidden" name="no_shipping" value="2">
+		<input type="hidden" name="no_note" value="1"> -->
+		<input type="hidden" name="currency_code" value="EUR">
+		<input type="hidden" name="tax" value="0">
+		<input type="hidden" name="email" value="{{fiche.email}}">
+		<input type="hidden" name="last_name" value="{{fiche.nom}}">
+		<input type="hidden" name="first_name" value="{{fiche.prenom}}">
+		<input type="hidden" name="return" value="http://ecovolontaires.picardie-nature.org/confirmation_fin"/>
+		<input type="submit" value="Payer">
+	</form>
+
+	
 {% endif %}
 {% endblock %}

@@ -13,6 +13,9 @@ def fermer(request):
 	logout(request)
 	return render_to_response('fermer.html', {'login': None})
 
+def confirmation_fin(request):
+	return render_to_response('confirmation_fin.html')
+
 def confirmation(request):
 	u = None
 	if not request.user.is_authenticated():
@@ -26,13 +29,22 @@ def confirmation(request):
 	
 	# ici on est connecté
 	fiche = inscription.models.Fiche.objects.get(user_id=request.user.id)
-	candidat = inscription.models.CandidatRetenu.objects.get(fiche=fiche.id)
-	return render_to_response('confirmation.html', {'login': True, 'fiche': fiche, 'candidat': candidat})
+	total = 0
+	try:
+		candidat = inscription.models.CandidatRetenu.objects.get(fiche=fiche.id)
+		total = candidat.frais_inscription + candidat.frais_hebergement
+	except:
+		return render_to_response('pas_retenu.html')
+
+	return render_to_response('confirmation.html', {'login': True, 'fiche': fiche, 'candidat': candidat, 'total': total})
 	
 def mot_de_passe(request):
 	msg = ""
 	if request.method == "POST":
-		u = User.objects.get(username=request.POST['email'])
+		try:
+			u = User.objects.get(username=request.POST['email'])
+		except:
+			u = False
 		if u:
 			mot_de_passe = commands.getoutput('pwgen -1')
 			u.set_password(mot_de_passe)
@@ -42,7 +54,9 @@ def mot_de_passe(request):
 Votre nouveau mot de passe est : %s
 
 """ % (mot_de_passe), 'support@picardie-nature.org', [u.email])
-		msg = "Nouveau mot de passe envoyé"
+			msg = "Nouveau mot de passe envoyé"
+		else:
+			msg = "Adresse inconnue"
 	
 	return render_to_response('mot_de_passe.html', {'msg': msg})
 

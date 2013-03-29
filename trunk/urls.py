@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     (r'^fermer/', 'ecovolontaires.inscription.views.fermer'),
     (r'^documents/', 'ecovolontaires.inscription.views.documents'),
     (r'^confirmation/', 'ecovolontaires.inscription.views.confirmation'),
+    (r'^confirmation_fin', 'ecovolontaires.inscription.views.confirmation_fin'),
     (r'^mot_de_passe/', 'ecovolontaires.inscription.views.mot_de_passe'),
 )
