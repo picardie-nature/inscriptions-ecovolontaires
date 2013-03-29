@@ -156,8 +156,7 @@ class CandidatRetenu(models.Model):
 		('SURV.', 'Surveillance des phoques')
 	)
 
-	fiche = models.ForeignKey(Fiche)	
-	#tshirt = models.CharField("T-Shirt", max_length=3, choices=CHOIX_TSHIRT, blank=True)
+	fiche = models.ForeignKey(Fiche, unique=True)	
 	retenu_08_06_au_15_06 = models.CharField("Présent du 08-06 au 15-06", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_15_06_au_22_06 = models.CharField("Présent du 15-06 au 22-06", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_22_06_au_29_06 = models.CharField("Présent du 22-06 au 29-06", max_length=5, choices=CHOIX_MISSION, blank=True)
