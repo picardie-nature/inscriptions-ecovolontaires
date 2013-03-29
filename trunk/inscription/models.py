@@ -145,7 +145,7 @@ envoyer_mail_confirmation.short_description = "Envoyer mails confirmation inscri
 
 
 class CandidatRetenuAdmin(admin.ModelAdmin):
-	list_display = ['fiche','frais_hebergement','frais_inscription','date_dernier_envoi_mail','date_dernier_envoi_mail','date_confirmation','date_reception_paiement']
+	list_display = ['fiche','frais_hebergement','frais_inscription','date_validation','date_dernier_envoi_mail','date_confirmation','date_reception_paiement']
 	list_filter = ['annulation','adhesion']
 	readonly_fields = ('date_validation','date_dernier_envoi_mail','date_confirmation')
 	actions = [envoyer_mail_confirmation]
