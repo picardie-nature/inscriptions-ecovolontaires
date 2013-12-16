@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from ecovolontaires import inscription
+import inscription
 from datetime import datetime,date
 from os import listdir,mkdir,path,environ
 import commands
@@ -120,7 +120,7 @@ def documents(request):
 
 
 def index(request):
-	if (date.today() < date(2013,3,11)):
+	if (date.today() < date(2014,3,3)):
 		if request.method == 'POST':
 			fiche = inscription.models.Fiche()
 			f = inscription.models.FicheForm(request.POST, instance=fiche)

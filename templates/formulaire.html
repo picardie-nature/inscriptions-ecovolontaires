@@ -1,11 +1,12 @@
 {% extends "main.html" %}
 {% block main %}
 	<form method="post" action="/inscription/">
-	<h1>Inscription écovolontaire - saison 2013</h1>
+	<h1>Inscription écovolontaire - saison 2014</h1>
 	<span class="erreur">{{form.errors}}</span>
 	<div id="partie1" class="partie">
 	<div class="info">
-		Bienvenue sur le formulaire d'inscritpion à l'écovolontariat pour la surveillance estivale des phoques de la baie de Somme et pour le Centre de sauvegarde de la Faune sauvage de Picardie Nature.
+		Bienvenue sur le formulaire d'inscription à l'écovolontariat pour la surveillance estivale des phoques
+		de la baie de Somme et pour le Centre de sauvegarde de la Faune sauvage de Picardie Nature.
 	</div>
 	<h2>Identitée</h2>
 	<table>
@@ -71,8 +72,8 @@
 		</h3>
 		<div class="info">Les horaires des terrains de surveillance sont callées sur les horaires des marées basse, elles
 		sont donc variables d'une journée à l'autre, sur une amplitude horaire de 6h à 21h30.</div>
-		<div class="info">Les horaires des équipes des soigneurs sont 6h30-14h30 et 14h-22h, vous ferez partie de l'une
-		ou l'autre équipe</div>
+		<div class="info">Les horaires des équipes des soigneurs sont 6h30-14h30 et 14h-22h, vous ferez parti de l'une
+		ou l'autre des équipes</div>
 		<div class="info">Durant votre séjour vous serez logé et nourri en gîte collectif. Cela implique une participation
 		de votre part aux activitées communes (courses, repas...) et une tolérance de la vie en groupe (dortoirs).</div>
 	<a href="javascript:precedent()">Étape précédente</a>
@@ -83,10 +84,10 @@
 			La surveillance estivale sera mise en place de début juin à début septembre. La participation est au minimum de 2 semaines consécutives;
 		</div>
 		<div class="info">
-			Le Centre de sauvegarde de la faune sauvage, sera mis en place en cas dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une seule semaine;
+			Le Centre de sauvegarde de la faune sauvage, sera mis en place dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une semaine <b>maximum</b>;
 		</div>
 		<div class="info">
-			La formation dispensée chaque samedi matin (dès 9h30) est obligatoire pour tous le jour de votre arrivée;
+			La formation dispensée chaque samedi matin (dès 9h30) est obligatoire, pour tous, et aura lieu le jour de votre arrivée;
 		</div>
 		<div class="info">
 			En l'absence d'accueil de phoque au Centre de sauvegarde, il vous sera proposé d'intégrer les équipes de la surveillance estivale.
@@ -96,29 +97,26 @@
 		<p>(Cochez les semaines où vous êtes disponible)</p>
 
 		<p class="directive">Combien de semaines souhaitez vous rester <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
-		<p class="valeur">{{form.duree_n_semaine}}</p>
+		<p class="valeur">{{form.duree_n_semaine}} <small>(surveillance min 2, centre de sauvegarde max 1)</small></p>
 		
-		{{form.dispo_08_06_au_15_06}} <label for=id_dispo_08_06_au_15_06>{{form.dispo_08_06_au_15_06.label}}</label><br/>
-		{{form.dispo_15_06_au_22_06}} <label for=id_dispo_15_06_au_22_06>{{form.dispo_15_06_au_22_06.label}}</label><br/>
-		{{form.dispo_22_06_au_29_06}} <label for=id_dispo_22_06_au_29_06>{{form.dispo_22_06_au_29_06.label}}</label><br/>
-		{{form.dispo_29_06_au_06_07}} <label for=id_dispo_29_06_au_06_07>{{form.dispo_29_06_au_06_07.label}}</label><br/>
-		{{form.dispo_06_07_au_13_07}} <label for=id_dispo_06_07_au_13_07>{{form.dispo_06_07_au_13_07.label}}</label><br/>
-		{{form.dispo_13_07_au_20_07}} <label for=id_dispo_13_07_au_20_07>{{form.dispo_13_07_au_20_07.label}}</label><br/>
-		{{form.dispo_20_07_au_27_07}} <label for=id_dispo_20_07_au_27_07>{{form.dispo_20_07_au_27_07.label}}</label><br/>
-		{{form.dispo_27_07_au_03_08}} <label for=id_dispo_27_07_au_03_08>{{form.dispo_27_07_au_03_08.label}}</label><br/>
-		{{form.dispo_03_08_au_10_08}} <label for=id_dispo_03_08_au_10_08>{{form.dispo_03_08_au_10_08.label}}</label><br/>
-		{{form.dispo_10_08_au_17_08}} <label for=id_dispo_10_08_au_17_08>{{form.dispo_10_08_au_17_08.label}}</label><br/>
-		{{form.dispo_17_08_au_24_08}} <label for=id_dispo_17_08_au_24_08>{{form.dispo_17_08_au_24_08.label}}</label><br/>
-		{{form.dispo_24_08_au_31_08}} <label for=id_dispo_24_08_au_31_08>{{form.dispo_24_08_au_31_08.label}}</label><br/>
-		{{form.dispo_31_08_au_07_09}} <label for=id_dispo_31_08_au_07_09>{{form.dispo_31_08_au_07_09.label}}</label><br/>
-		{{form.dispo_07_09_au_14_09}} <label for=id_dispo_07_09_au_14_09>{{form.dispo_07_09_au_14_09.label}}</label><br/>
-		{{form.dispo_14_09_au_21_09}} <label for=id_dispo_14_09_au_21_09>{{form.dispo_14_09_au_21_09.label}}</label><br/>
-		{{form.dispo_21_09_au_28_09}} <label for=id_dispo_21_09_au_28_09>{{form.dispo_21_09_au_28_09.label}}</label><br/>
-		{{form.dispo_28_09_au_05_10}} <label for=id_dispo_28_09_au_05_10>{{form.dispo_28_09_au_05_10.label}}</label><br/>
-		{{form.dispo_05_10_au_12_10}} <label for=id_dispo_05_10_au_12_10>{{form.dispo_05_10_au_12_10.label}}</label><br/>
-		{{form.dispo_12_10_au_19_10}} <label for=id_dispo_12_10_au_19_10>{{form.dispo_12_10_au_19_10.label}}</label><br/>
-		{{form.dispo_19_10_au_26_10}} <label for=id_dispo_19_10_au_26_10>{{form.dispo_19_10_au_26_10.label}}</label><br/>
-		{{form.dispo_26_10_au_02_11}} <label for=id_dispo_26_10_au_02_11>{{form.dispo_26_10_au_02_11.label}}</label><br/>
+		{{form.dispo_07_06_au_14_06}} <label for="id_dispo_07_06_au_14_06">{{form.dispo_07_06_au_14_06.label}}</label><br/>
+		{{form.dispo_14_06_au_21_06}} <label for="id_dispo_14_06_au_21_06">{{form.dispo_14_06_au_21_06.label}}</label><br/>
+		{{form.dispo_21_06_au_28_06}} <label for="id_dispo_21_06_au_28_06">{{form.dispo_21_06_au_28_06.label}}</label><br/>
+		{{form.dispo_28_06_au_05_07}} <label for="id_dispo_28_06_au_05_07">{{form.dispo_28_06_au_05_07.label}}</label><br/>
+		{{form.dispo_05_07_au_12_07}} <label for="id_dispo_05_07_au_12_07">{{form.dispo_05_07_au_12_07.label}}</label><br/>
+		{{form.dispo_12_07_au_19_07}} <label for="id_dispo_12_07_au_19_07">{{form.dispo_12_07_au_19_07.label}}</label><br/>
+		{{form.dispo_19_07_au_26_07}} <label for="id_dispo_19_07_au_26_07">{{form.dispo_19_07_au_26_07.label}}</label><br/>
+		{{form.dispo_26_07_au_02_08}} <label for="id_dispo_26_07_au_02_08">{{form.dispo_26_07_au_02_08.label}}</label><br/>
+		{{form.dispo_02_08_au_09_08}} <label for="id_dispo_02_08_au_09_08">{{form.dispo_02_08_au_09_08.label}}</label><br/>
+		{{form.dispo_09_08_au_16_08}} <label for="id_dispo_09_08_au_16_08">{{form.dispo_09_08_au_16_08.label}}</label><br/>
+		{{form.dispo_16_08_au_23_08}} <label for="id_dispo_16_08_au_23_08">{{form.dispo_16_08_au_23_08.label}}</label><br/>
+		{{form.dispo_23_08_au_30_08}} <label for="id_dispo_23_08_au_30_08">{{form.dispo_23_08_au_30_08.label}}</label><br/>
+		{{form.dispo_30_08_au_06_09}} <label for="id_dispo_30_08_au_06_09">{{form.dispo_30_08_au_06_09.label}}</label><br/>
+		{{form.dispo_06_09_au_13_09}} <label for="id_dispo_06_09_au_13_09">{{form.dispo_06_09_au_13_09.label}}</label><br/>
+		{{form.dispo_13_09_au_20_09}} <label for="id_dispo_13_09_au_20_09">{{form.dispo_13_09_au_20_09.label}}</label><br/>
+		{{form.dispo_20_09_au_27_09}} <label for="id_dispo_20_09_au_27_09">{{form.dispo_20_09_au_27_09.label}}</label><br/>
+		{{form.dispo_27_09_au_04_10}} <label for="id_dispo_27_09_au_04_10">{{form.dispo_27_09_au_04_10.label}}</label><br/>
+		{{form.dispo_04_10_au_11_10}} <label for="id_dispo_04_10_au_11_10">{{form.dispo_04_10_au_11_10.label}}</label><br/>
 
 <!--
 		<p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
@@ -204,7 +202,7 @@
 			{{form.tshirt.label}} : {{form.tshirt}}
 		</p>
 		<h3>Adhésion</h3>
-		<p>Pour une question d'assurance, tout écovolontaire participant à l'une de ces actions doit être à jour de son adhésion 2013 à Picardie Nature. </p>
+		<p>Pour une question d'assurance, tout écovolontaire participant à l'une de ces actions doit être à jour de son adhésion 2014 à Picardie Nature. </p>
 		<h3>Participation</h3>
 		<p><ul>
 			<li>Les frais de gestion s'élèvent à 50 € </li>
