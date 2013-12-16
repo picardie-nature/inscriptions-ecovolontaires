@@ -5,7 +5,7 @@
 	<span class="erreur">{{form.errors}}</span>
 	<div id="partie1" class="partie">
 	<div class="info">
-		Bienvenue sur le formulaire d'inscritpion à l'écovolontariat pour la surveillance estivale des phoques
+		Bienvenue sur le formulaire d'inscription à l'écovolontariat pour la surveillance estivale des phoques
 		de la baie de Somme et pour le Centre de sauvegarde de la Faune sauvage de Picardie Nature.
 	</div>
 	<h2>Identitée</h2>
@@ -72,8 +72,8 @@
 		</h3>
 		<div class="info">Les horaires des terrains de surveillance sont callées sur les horaires des marées basse, elles
 		sont donc variables d'une journée à l'autre, sur une amplitude horaire de 6h à 21h30.</div>
-		<div class="info">Les horaires des équipes des soigneurs sont 6h30-14h30 et 14h-22h, vous ferez partie de l'une
-		ou l'autre équipe</div>
+		<div class="info">Les horaires des équipes des soigneurs sont 6h30-14h30 et 14h-22h, vous ferez parti de l'une
+		ou l'autre des équipes</div>
 		<div class="info">Durant votre séjour vous serez logé et nourri en gîte collectif. Cela implique une participation
 		de votre part aux activitées communes (courses, repas...) et une tolérance de la vie en groupe (dortoirs).</div>
 	<a href="javascript:precedent()">Étape précédente</a>
@@ -84,10 +84,10 @@
 			La surveillance estivale sera mise en place de début juin à début septembre. La participation est au minimum de 2 semaines consécutives;
 		</div>
 		<div class="info">
-			Le Centre de sauvegarde de la faune sauvage, sera mis en place en cas dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une seule semaine;
+			Le Centre de sauvegarde de la faune sauvage, sera mis en place dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une semaine <b>maximum</b>;
 		</div>
 		<div class="info">
-			La formation dispensée chaque samedi matin (dès 9h30) est obligatoire pour tous le jour de votre arrivée;
+			La formation dispensée chaque samedi matin (dès 9h30) est obligatoire, pour tous, et aura lieu le jour de votre arrivée;
 		</div>
 		<div class="info">
 			En l'absence d'accueil de phoque au Centre de sauvegarde, il vous sera proposé d'intégrer les équipes de la surveillance estivale.
@@ -97,7 +97,7 @@
 		<p>(Cochez les semaines où vous êtes disponible)</p>
 
 		<p class="directive">Combien de semaines souhaitez vous rester <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
-		<p class="valeur">{{form.duree_n_semaine}}</p>
+		<p class="valeur">{{form.duree_n_semaine}} <small>(surveillance min 2, centre de sauvegarde max 1)</small></p>
 		
 		{{form.dispo_07_06_au_14_06}} <label for="id_dispo_07_06_au_14_06">{{form.dispo_07_06_au_14_06.label}}</label><br/>
 		{{form.dispo_14_06_au_21_06}} <label for="id_dispo_14_06_au_21_06">{{form.dispo_14_06_au_21_06.label}}</label><br/>
@@ -202,7 +202,7 @@
 			{{form.tshirt.label}} : {{form.tshirt}}
 		</p>
 		<h3>Adhésion</h3>
-		<p>Pour une question d'assurance, tout écovolontaire participant à l'une de ces actions doit être à jour de son adhésion 2013 à Picardie Nature. </p>
+		<p>Pour une question d'assurance, tout écovolontaire participant à l'une de ces actions doit être à jour de son adhésion 2014 à Picardie Nature. </p>
 		<h3>Participation</h3>
 		<p><ul>
 			<li>Les frais de gestion s'élèvent à 50 € </li>

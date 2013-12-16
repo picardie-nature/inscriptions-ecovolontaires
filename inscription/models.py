@@ -68,7 +68,7 @@ class Fiche(models.Model):
 	dispo_09_08_au_16_08 = models.BooleanField("Disponible du 09-08 au 16-08")
 	dispo_16_08_au_23_08 = models.BooleanField("Disponible du 16-08 au 23-08")
 	dispo_23_08_au_30_08 = models.BooleanField("Disponible du 23-08 au 30-08")
-	dispo_30_08_au_06_09 = models.BooleanField("Disponible du 30-08 au 06-09")
+	dispo_30_08_au_06_09 = models.BooleanField("Disponible du 30-08 au 06-09 (centre de sauvegarde uniquement)")
 	dispo_06_09_au_13_09 = models.BooleanField("Disponible du 06-09 au 13-09 (centre de sauvegarde uniquement)")
 	dispo_13_09_au_20_09 = models.BooleanField("Disponible du 13-09 au 20-09 (centre de sauvegarde uniquement)")
 	dispo_20_09_au_27_09 = models.BooleanField("Disponible du 20-09 au 27-09 (centre de sauvegarde uniquement)")
