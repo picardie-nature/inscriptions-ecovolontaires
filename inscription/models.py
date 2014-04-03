@@ -119,23 +119,23 @@ def envoyer_mail_confirmation(modeladmin, request, queryset):
 		candidat.save()
 		send_mail(u"Confirmation de participation à l'écovolontariat phoques",u"""Confirmation de participation à l'écovolontariat phoques
 
-Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2013: du 8 juin au 31 août pour la surveillance estivale et dès le 8 juin pour le centre de sauvegarde de la faune sauvage.
+Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2014.
 
-Merci de confirmer votre votre participation, avant le 7 avril minuit. Pour cela, veuillez:
+Merci de confirmer votre votre participation Pour cela, veuillez:
   - accepter le règlement intérieur,
   - vous acquitter des frais de gestion de 50€ par personne,
   - vous acquitter des frais de participation à l'hébergement et à la nourriture de 20€ par semaine,
-  - vérifier que vous êtes à jour de votre adhésion 2013, si ce n'est pas le cas: adhérez en ligne ! (http://dons.picardie-nature.org/)
+  - vérifier que vous êtes à jour de votre adhésion 2014, si ce n'est pas le cas: adhérez en ligne ! (http://dons.picardie-nature.org/)
 
 Pour ce faire rendez-vous à cette adresse http://ecovolontaires.picardie-nature.org/confirmation, et identifiez-vous.
 
 Rappels:
-  - Tous les candidats ayant confirmé seront considérés comme participants écovolontaires dès le 7 avril minuit. Dans le cas contraire, les places seront proposées à d'autres candidats.
+  - Tous les candidats ayant confirmé seront considérés comme participants écovolontaires dès le 10 avril minuit. Dans le cas contraire, les places seront proposées à d'autres candidats.
   - Les candidats sélectionnés qui ne souhaiteraient ou ne pourraient plus assurer leur période d'écovolontariat sont priés de prévenir de leur désistement au plus tôt.
-    - En cas de désistement signalé avant le 15 mai, le chèque de caution vous sera retourné. Passé cette date, ce dernier sera encaissé,
+    - En cas de désistement signalé avant le 10 mai, le chèque de caution vous sera retourné. Passé cette date, ce dernier sera encaissé,
     - En cas de désistement les frais de gestion ne seront pas remboursés,
     - En cas de désistement, la participation aux frais d'hébergement et de nourriture de 20€ par semaine vous seront remboursés.
-""", 'support@picardie-nature.org', [candidat.fiche.email])
+""", 'support-ecov@picardie-nature.org', [candidat.fiche.email])
 
 
 envoyer_mail_confirmation.short_description = "Envoyer mails confirmation inscription"
@@ -151,31 +151,26 @@ class CandidatRetenuAdmin(admin.ModelAdmin):
 class CandidatRetenu(models.Model):
 	CHOIX_MISSION = (
 		('SOINS', 'Centre de soins'),
-		('SURV.', 'Surveillance des phoques')
+		('SURV', 'Surveillance des phoques')
 	)
 
 	fiche = models.ForeignKey(Fiche, unique=True)	
-	retenu_08_06_au_15_06 = models.CharField("Présent du 08-06 au 15-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_15_06_au_22_06 = models.CharField("Présent du 15-06 au 22-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_22_06_au_29_06 = models.CharField("Présent du 22-06 au 29-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_29_06_au_06_07 = models.CharField("Présent du 29-06 au 06-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_06_07_au_13_07 = models.CharField("Présent du 06-07 au 13-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_13_07_au_20_07 = models.CharField("Présent du 13-07 au 20-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_20_07_au_27_07 = models.CharField("Présent du 20-07 au 27-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_27_07_au_03_08 = models.CharField("Présent du 27-07 au 03-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_03_08_au_10_08 = models.CharField("Présent du 03-08 au 10-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_10_08_au_17_08 = models.CharField("Présent du 10-08 au 17-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_17_08_au_24_08 = models.CharField("Présent du 17-08 au 24-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_24_08_au_31_08 = models.CharField("Présent du 24-08 au 31-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_31_08_au_07_09 = models.CharField("Présent du 31-08 au 07-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_07_09_au_14_09 = models.CharField("Présent du 07-09 au 14-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_14_09_au_21_09 = models.CharField("Présent du 14-09 au 21-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_21_09_au_28_09 = models.CharField("Présent du 21-09 au 28-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_28_09_au_05_10 = models.CharField("Présent du 28-09 au 05-10 (centre de sauvegarde uniquement)", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_05_10_au_12_10 = models.CharField("Présent du 05-10 au 12-10 (centre de sauvegarde uniquement)", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_12_10_au_19_10 = models.CharField("Présent du 12-10 au 19-10 (centre de sauvegarde uniquement)", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_19_10_au_26_10 = models.CharField("Présent du 19-10 au 26-10 (centre de sauvegarde uniquement)", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_26_10_au_02_11 = models.CharField("Présent du 26-10 au 02-11 (centre de sauvegarde uniquement)", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_07_06_au_14_06 = models.CharField("Présent du 07-06 au 14-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_14_06_au_21_06 = models.CharField("Présent du 14-06 au 21-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_21_06_au_28_06 = models.CharField("Présent du 21-06 au 28-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_28_06_au_05_07 = models.CharField("Présent du 28-06 au 05-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_05_07_au_12_07 = models.CharField("Présent du 05-07 au 12-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_12_07_au_19_07 = models.CharField("Présent du 12-07 au 19-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_19_07_au_26_07 = models.CharField("Présent du 19-07 au 26-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_26_07_au_02_08 = models.CharField("Présent du 26-07 au 02-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_02_08_au_09_08 = models.CharField("Présent du 02-08 au 09-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_09_08_au_16_08 = models.CharField("Présent du 09-08 au 16-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_16_08_au_23_08 = models.CharField("Présent du 16-08 au 23-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_23_08_au_30_08 = models.CharField("Présent du 23-08 au 30-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_30_08_au_06_09 = models.CharField("Présent du 30-08 au 06-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_06_09_au_13_09 = models.CharField("Présent du 06-09 au 13-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_13_09_au_20_09 = models.CharField("Présent du 13-09 au 20-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_20_09_au_27_09 = models.CharField("Présent du 20-09 au 27-09", max_length=5, choices=CHOIX_MISSION, blank=True)
 	date_validation = models.DateTimeField("Date validation", blank=True,null=True)
 	date_confirmation = models.DateTimeField("Date confirmation", blank=True,null=True)
 	frais_inscription = models.IntegerField('Frais inscription', default=50) # 50 €
@@ -186,8 +181,8 @@ class CandidatRetenu(models.Model):
 	adhesion = models.BooleanField("Adhésion confirmée")
 
 def calcul_frais(sender, instance, **kwargs):
-	semaines = ['retenu_08_06_au_15_06', 'retenu_15_06_au_22_06', 'retenu_22_06_au_29_06', 'retenu_29_06_au_06_07', 'retenu_06_07_au_13_07', 'retenu_13_07_au_20_07', 'retenu_20_07_au_27_07', 'retenu_27_07_au_03_08', 'retenu_03_08_au_10_08', 'retenu_10_08_au_17_08', 'retenu_17_08_au_24_08', 'retenu_24_08_au_31_08', 'retenu_31_08_au_07_09', 'retenu_07_09_au_14_09', 'retenu_14_09_au_21_09', 'retenu_21_09_au_28_09', 'retenu_28_09_au_05_10', 'retenu_05_10_au_12_10', 'retenu_12_10_au_19_10', 'retenu_19_10_au_26_10', 'retenu_26_10_au_02_11']
-
+	semaines = ['retenu_07_06_au_14_06', 'retenu_14_06_au_21_06', 'retenu_21_06_au_28_06', 'retenu_28_06_au_05_07', 'retenu_05_07_au_12_07', 'retenu_12_07_au_19_07', 'retenu_19_07_au_26_07', 'retenu_26_07_au_02_08', 'retenu_02_08_au_09_08', 'retenu_09_08_au_16_08', 'retenu_16_08_au_23_08', 'retenu_23_08_au_30_08', 'retenu_30_08_au_06_09', 'retenu_06_09_au_13_09', 'retenu_13_09_au_20_09', 'retenu_20_09_au_27_09']
+	instance.frais_inscription = 50
 	instance.frais_hebergement = 0
 	cout_semaine = 20
 
@@ -207,4 +202,3 @@ class FicheForm(forms.ModelForm):
 
 class UploadForm(forms.Form):
 	fic = forms.FileField()
-
