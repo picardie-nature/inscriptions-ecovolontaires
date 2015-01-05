@@ -120,25 +120,25 @@ def envoyer_mail_confirmation(modeladmin, request, queryset):
 		u = User(candidat.fiche.user_id)
 		candidat.date_dernier_envoi_mail = datetime.now()
 		candidat.save()
-		send_mail(u"Confirmation de participation à l'écovolontariat phoques",u"""Confirmation de participation à l'écovolontariat phoques
+		send_mail(u"Confirmation de participation à l'écovolontariat phoques",u"""Confirmation de participation au bénévolat pour les phoques
 
-Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2014.
+Vous avez été sélectionné(e) pour participer aux cessions de bénévolat pour les phoques qui se tiendront au cours de l'été 2015.
 
 Merci de confirmer votre votre participation Pour cela, veuillez:
   - accepter le règlement intérieur,
   - vous acquitter des frais de gestion de 50€ par personne,
   - vous acquitter des frais de participation à l'hébergement et à la nourriture de 20€ par semaine,
-  - vérifier que vous êtes à jour de votre adhésion 2014, si ce n'est pas le cas: adhérez en ligne ! (http://dons.picardie-nature.org/)
+  - vérifier que vous êtes à jour de votre adhésion 2015, si ce n'est pas le cas: adhérez en ligne ! (http://dons.picardie-nature.org/)
 
-Pour ce faire rendez-vous à cette adresse http://ecovolontaires.picardie-nature.org/confirmation, et identifiez-vous.
+Pour ce faire rendez-vous à cette adresse http://benevoles.bds.picardie-nature.org/confirmation, et identifiez-vous.
 
 Rappels:
-  - Tous les candidats ayant confirmé seront considérés comme participants écovolontaires dès le 10 avril minuit. Dans le cas contraire, les places seront proposées à d'autres candidats.
-  - Les candidats sélectionnés qui ne souhaiteraient ou ne pourraient plus assurer leur période d'écovolontariat sont priés de prévenir de leur désistement au plus tôt.
-    - En cas de désistement signalé avant le 10 mai, le chèque de caution vous sera retourné. Passé cette date, ce dernier sera encaissé,
+  - Tous les candidats ayant confirmé seront considérés comme bénévoles pour les phoques dès le 8 avril minuit. Dans le cas contraire, les places seront proposées à d'autres candidats.
+  - Les candidats sélectionnés qui ne souhaiteraient ou ne pourraient plus assurer leur période de bénévolat sont priés de prévenir de leur désistement au plus tôt.
+    - En cas de désistement signalé avant le 1er mai, le chèque de caution vous sera retourné. Passé cette date, ce dernier sera encaissé,
     - En cas de désistement les frais de gestion ne seront pas remboursés,
     - En cas de désistement, la participation aux frais d'hébergement et de nourriture de 20€ par semaine vous seront remboursés.
-""", 'support-ecov@picardie-nature.org', [candidat.fiche.email])
+""", 'support-vbds@picardie-nature.org', [candidat.fiche.email])
 
 
 envoyer_mail_confirmation.short_description = "Envoyer mails confirmation inscription"
