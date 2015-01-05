@@ -1,256 +1,265 @@
 {% extends "main.html" %}
 {% block main %}
-	<form method="post" action="/inscription/">
-	<h1>Inscription écovolontaire - saison 2014</h1>
-	<span class="erreur">{{form.errors}}</span>
-	<div id="partie1" class="partie">
-	<div class="info">
-		Bienvenue sur le formulaire d'inscription à l'écovolontariat pour la surveillance estivale des phoques
-		de la baie de Somme et pour le Centre de sauvegarde de la Faune sauvage de Picardie Nature.
-	</div>
-	<h2>Identitée</h2>
-	<table>
-		<tr>
-			<td width="30%">
-				<p class="directive">{{form.nom.label}} <span class="erreur">{{form.nom.errors}}</span></p>
-				<p class="valeur">{{form.nom}}</p>
-			</td>
-			<td width="30%">
-				<p class="directive">{{form.prenom.label}} <span class="erreur">{{form.prenom.errors}}</span></p>
-				<p class="valeur">{{form.prenom}}</p>
-			</td>	
-			<td width="30%">
-				<p class="directive">Age <span class="erreur">{{form.age.errors}}</span></p>
-				<p class="valeur">{{form.age}}</p>
-			</td>
+        <form method="post" action="/inscription/">
+        <h1>Inscription bénévolat phoques - saison 2015</h1>
+        <span class="erreur">{{form.errors}}</span>
+        <div id="partie1" class="partie">
+        <div class="info">
+                Bienvenue sur le formulaire d'inscription au bénévolat pour les phoques en baie de Somme. L'inscription concerne les missions « surveillance estivale des phoques de la baie de Somme » et « la prise en charge des phoques échoués vivants » menées par l'association Picardie Nature. 
+        </div>
+        <h2>Identitée</h2>
+        <table>
+                <tr>
+                        <td width="30%">
+                                <p class="directive">{{form.nom.label}} <span class="erreur">{{form.nom.errors}}</span></p>
+                                <p class="valeur">{{form.nom}}</p>
+                        </td>
+                        <td width="30%">
+                                <p class="directive">{{form.prenom.label}} <span class="erreur">{{form.prenom.errors}}</span></p>
+                                <p class="valeur">{{form.prenom}}</p>
+                        </td>   
+                        <td width="30%">
+                                <p class="directive">Age <span class="erreur">{{form.age.errors}}</span></p>
+                                <p class="valeur">{{form.age}}</p>
+                        </td>
 
-		</tr>
-		<tr>
-			<td>
-				<p class="directive">{{form.email.label}} <span class="erreur">{{form.email.errors}}</span></p>
-				<p class="valeur">{{form.email}}</p>
-			</td>
-			<td>
-				<p class="directive">{{form.mobile.label}} <span class="erreur">{{form.mobile.errors}}</span></p>
-				<p class="valeur">{{form.mobile}}</p>
-			</td>
-			<td>
-				<p class="directive">{{form.sexe.label}} <span class="erreur">{{form.sexe.errors}}</span></p>
-				<p class="valeur">{{form.sexe}}</p>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<p class="directive">Êtes vous adhérent à une autre association ?
-					<span class="erreur">{{form.adherent_autre_asso.errors}}</span></p>
-				<p class="valeur">{{form.adherent_autre_asso}}</p>
-			</td>
+                </tr>
+                <tr>
+                        <td>
+                                <p class="directive">{{form.email.label}} <span class="erreur">{{form.email.errors}}</span></p>
+                                <p class="valeur">{{form.email}}</p>
+                        </td>
+                        <td>
+                                <p class="directive">{{form.mobile.label}} <span class="erreur">{{form.mobile.errors}}</span></p>
+                                <p class="valeur">{{form.mobile}}</p>
+                        </td>
+                        <td>
+                                <p class="directive">{{form.sexe.label}} <span class="erreur">{{form.sexe.errors}}</span></p>
+                                <p class="valeur">{{form.sexe}}</p>
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                                <p class="directive">Êtes vous adhérent à une autre association ?
+                                        <span class="erreur">{{form.adherent_autre_asso.errors}}</span></p>
+                                <p class="valeur">{{form.adherent_autre_asso}}</p>
+                        </td>
 
-		</tr>
-	</table>
-	<div class="info">
-		Attention : Vérifiez bien votre adresse e-mail : un mot de passe sera envoyé sur celle-ci pour vous permettre d'envoyer vos documents.
-	</div>
-	<div class="info">
-		Vous êtes déjà inscrit ? Pour envoyer les documents suivez ce <a href="/documents">lien</a>.
-	</div>
-	<a href="javascript:suivant()">Passer à l'étape suivante</a>
-	</div>
-	<div id="partie2" class="partie">
-	<h2>Votre candidature porte sur :</h2>
-		<h3>
-			{{form.participation_csfs}}
-			<label for="id_participation_csfs" type="checkbox">
-				{{form.participation_csfs.label}}
-			</label>
-		</h3>
-		<h3>
-			{{form.participation_protection}}
-			<label for="id_participation_protection" type="checkbox">
-				{{form.participation_protection.label}}
-			</label>
-		</h3>
-		<div class="info">Les horaires des terrains de surveillance sont callées sur les horaires des marées basse, elles
-		sont donc variables d'une journée à l'autre, sur une amplitude horaire de 6h à 21h30.</div>
-		<div class="info">Les horaires des équipes des soigneurs sont 6h30-14h30 et 14h-22h, vous ferez parti de l'une
-		ou l'autre des équipes</div>
-		<div class="info">Durant votre séjour vous serez logé et nourri en gîte collectif. Cela implique une participation
-		de votre part aux activitées communes (courses, repas...) et une tolérance de la vie en groupe (dortoirs).</div>
-	<a href="javascript:precedent()">Étape précédente</a>
-	<a href="javascript:suivant()">Passer à l'étape suivante</a>
-	</div>
-	<div id="partie3" class="partie">
-		<div class="info">
-			La surveillance estivale sera mise en place de début juin à début septembre. La participation est au minimum de 2 semaines consécutives;
-		</div>
-		<div class="info">
-			Le Centre de sauvegarde de la faune sauvage, sera mis en place dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une semaine <b>maximum</b>;
-		</div>
-		<div class="info">
-			La formation dispensée chaque samedi matin (dès 9h30) est obligatoire, pour tous, et aura lieu le jour de votre arrivée;
-		</div>
-		<div class="info">
-			En l'absence d'accueil de phoque au Centre de sauvegarde, il vous sera proposé d'intégrer les équipes de la surveillance estivale.
-		</div>
-		<div class="protection">
-		<h2>Vos disponibilités sur la mission de protection</h2>
-		<p>(Cochez les semaines où vous êtes disponible)</p>
+                </tr>
+        </table>
+        <div class="info">
+                Attention : Vérifiez bien votre adresse e-mail : un mot de passe sera envoyé sur celle-ci pour vous permettre d'envoyer vos documents.
+        </div>
+        <div class="info">
+                Vous êtes déjà inscrit ? Pour envoyer les documents suivez ce <a href="/documents">lien</a>.
+        </div>
+        <a href="javascript:suivant()">Passer à l'étape suivante</a>
+        </div>
+        <div id="partie2" class="partie">
+        <h2>Votre candidature porte sur :</h2>
+                <h3>
+                        {{form.participation_csfs}}
+                        <label for="id_participation_csfs" type="checkbox">
+                                {{form.participation_csfs.label}}
+                        </label>
+                </h3>
+                <h3>
+                        {{form.participation_protection}}
+                        <label for="id_participation_protection" type="checkbox">
+                                {{form.participation_protection.label}}
+                        </label>
+                </h3>
+               <div class="info">La présence des bénévoles sur le terrain est nécessaire dès que la mer descend et jusqu’à ce que la mer monte. Soit environ 6 heures consécutives.</div>
+               <div class="info">La présence sur le terrain est nécessaire du lever au coucher du soleil (les 6 heures consécutives sont variables en fonction de l’heure de la marée sur une amplitude allant de 6h30 à 21h30.</div>
+		   <div class="info">La présence sur le terrain est nécessaire quelles que soient les conditions météorologiques.</div>
+		<div class="info">les bénévoles sont répartis par binômes, en équipes "protection" et "animation". Durant leur séjour, les bénévoles sont amenés à intervenir sur chacun des "postes", en binôme, avec chacun des autres participants.</div>
+		<div class="info">Les équipes de "protection" peuvent prospecter de façon terrestre ou maritime. Les équipes pédestres marchent pendant plusieurs heures sur l’estran découvert par la mer ; elles se déploient au nord et au sud de l’estuaire. Les équipes maritimes interviennent en bateau pneumatique à moteur et/ou en kayak de mer (K2). Le bateau est piloté par une personne titulaire du permis mer. Le kayak de mer est confié uniquement aux personnes pratiquant régulièrement cette activité (attestation de niveau nécessaire, à demander auprès de votre club de kayak).</div>
+		<div class="info">Les bénévoles sont amenés à être en baie de Somme ou en baie d’Authie en fonction des besoins.</div>
 
-		<p class="directive">Combien de semaines souhaitez vous rester <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
-		<p class="valeur">{{form.duree_n_semaine}} <small>(surveillance min 2, centre de sauvegarde max 1)</small></p>
-		
-		{{form.dispo_07_06_au_14_06}} <label for="id_dispo_07_06_au_14_06">{{form.dispo_07_06_au_14_06.label}}</label><br/>
-		{{form.dispo_14_06_au_21_06}} <label for="id_dispo_14_06_au_21_06">{{form.dispo_14_06_au_21_06.label}}</label><br/>
-		{{form.dispo_21_06_au_28_06}} <label for="id_dispo_21_06_au_28_06">{{form.dispo_21_06_au_28_06.label}}</label><br/>
-		{{form.dispo_28_06_au_05_07}} <label for="id_dispo_28_06_au_05_07">{{form.dispo_28_06_au_05_07.label}}</label><br/>
-		{{form.dispo_05_07_au_12_07}} <label for="id_dispo_05_07_au_12_07">{{form.dispo_05_07_au_12_07.label}}</label><br/>
-		{{form.dispo_12_07_au_19_07}} <label for="id_dispo_12_07_au_19_07">{{form.dispo_12_07_au_19_07.label}}</label><br/>
-		{{form.dispo_19_07_au_26_07}} <label for="id_dispo_19_07_au_26_07">{{form.dispo_19_07_au_26_07.label}}</label><br/>
-		{{form.dispo_26_07_au_02_08}} <label for="id_dispo_26_07_au_02_08">{{form.dispo_26_07_au_02_08.label}}</label><br/>
-		{{form.dispo_02_08_au_09_08}} <label for="id_dispo_02_08_au_09_08">{{form.dispo_02_08_au_09_08.label}}</label><br/>
-		{{form.dispo_09_08_au_16_08}} <label for="id_dispo_09_08_au_16_08">{{form.dispo_09_08_au_16_08.label}}</label><br/>
-		{{form.dispo_16_08_au_23_08}} <label for="id_dispo_16_08_au_23_08">{{form.dispo_16_08_au_23_08.label}}</label><br/>
-		{{form.dispo_23_08_au_30_08}} <label for="id_dispo_23_08_au_30_08">{{form.dispo_23_08_au_30_08.label}}</label><br/>
-		{{form.dispo_30_08_au_06_09}} <label for="id_dispo_30_08_au_06_09">{{form.dispo_30_08_au_06_09.label}}</label><br/>
-		{{form.dispo_06_09_au_13_09}} <label for="id_dispo_06_09_au_13_09">{{form.dispo_06_09_au_13_09.label}}</label><br/>
-		{{form.dispo_13_09_au_20_09}} <label for="id_dispo_13_09_au_20_09">{{form.dispo_13_09_au_20_09.label}}</label><br/>
-		{{form.dispo_20_09_au_27_09}} <label for="id_dispo_20_09_au_27_09">{{form.dispo_20_09_au_27_09.label}}</label><br/>
-		{{form.dispo_27_09_au_04_10}} <label for="id_dispo_27_09_au_04_10">{{form.dispo_27_09_au_04_10.label}}</label><br/>
-		{{form.dispo_04_10_au_11_10}} <label for="id_dispo_04_10_au_11_10">{{form.dispo_04_10_au_11_10.label}}</label><br/>
+             <div class="info">La mise en place de l’annexe phoques du centre de sauvegarde est directement dépendante des échouages de phoques.</div>
+		<div class="info">La présence des aides-soigneurs est nécessaire, par équipe de 6h30 à 14h30 et de 14h à 22h.</div>
+		<div class="info">les heures de travail sont réparties sur la journée en fonction de l’état des animaux.</div	
 
+                <div class="info">Durant votre séjour, quelque soit la mission à laquelle vous participez, vous serez logé et nourri en gîte collectif. Cela implique une participation de votre part aux activitées communes (courses, repas...) et une tolérance de la vie en groupe (dortoirs).</div>
+        <a href="javascript:precedent()">Étape précédente</a>
+        <a href="javascript:suivant()">Passer à l'étape suivante</a>
+        </div>
+        <div id="partie3" class="partie">
+                <div class="info">
+                        La surveillance estivale sera mise en place de début juin à début septembre. La participation est au minimum de 2 semaines consécutives;
+                </div>
+                <div class="info">
+                        Le Centre de sauvegarde de la faune sauvage, sera mis en place dès l'échouage d'un phoque vivant, de début juin à fin octobre. La participation est d'une semaine <b>maximum</b>;
+                </div>
+                <div class="info">
+                        La formation dispensée chaque samedi matin (dès 9h30) est obligatoire, pour tous, et aura lieu le jour de votre arrivée;
+                </div>
+                <div class="info">
+Vous devrez vous acquitter : 
+- d’une participation de 50€ correspondant aux frais de gestion, 
+- d’une participation de 20€/semaine correspondant aux frais d’hébergement et de nourriture, 
+- d’une caution de 100€ qui ne sera pas encaissée (sauf si désistement de votre part, indiqué après le 1er mai) et vous sera rendue après votre écovolontariat.</div>
+                 
+                <div class="protection">
+                <h2>Vos disponibilités pour participer au bénévolat pour les phoques en baie de Somme</h2>
+                <p>(Cochez les semaines où vous êtes disponible)</p>
+
+                <p class="directive">Combien de semaines souhaitez vous rester ? <span class="erreur">{{form.duree_n_semaine.errors}}</span></p>
+                <p class="valeur">{{form.duree_n_semaine}} <small>(surveillance min 2, centre de sauvegarde max 1)</small></p>
+                
+                {{form.dispo_06_06_au_13_06}} <label for="id_dispo_06_06_au_13_06">{{form.dispo_06_06_au_13_06.label}}</label><br/>
+                {{form.dispo_13_06_au_20_06}} <label for="id_dispo_13_06_au_20_06">{{form.dispo_13_06_au_20_06.label}}</label><br/>
+                {{form.dispo_20_06_au_27_06}} <label for="id_dispo_20_06_au_27_06">{{form.dispo_20_06_au_27_06.label}}</label><br/>
+                {{form.dispo_27_06_au_04_07}} <label for="id_dispo_27_06_au_04_07">{{form.dispo_27_06_au_04_07.label}}</label><br/>
+                {{form.dispo_04_07_au_11_07}} <label for="id_dispo_04_07_au_11_07">{{form.dispo_04_07_au_11_07.label}}</label><br/>
+                {{form.dispo_11_07_au_18_07}} <label for="id_dispo_11_07_au_18_07">{{form.dispo_11_07_au_18_07.label}}</label><br/>
+                {{form.dispo_18_07_au_25_07}} <label for="id_dispo_18_07_au_25_07">{{form.dispo_18_07_au_25_07.label}}</label><br/>
+                {{form.dispo_25_07_au_01_08}} <label for="id_dispo_25_07_au_01_08">{{form.dispo_25_07_au_01_08.label}}</label><br/>
+                {{form.dispo_01_08_au_08_08}} <label for="id_dispo_01_08_au_08_08">{{form.dispo_01_08_au_08_08.label}}</label><br/>
+                {{form.dispo_08_08_au_15_08}} <label for="id_dispo_08_08_au_15_08">{{form.dispo_08_08_au_15_08.label}}</label><br/>
+                {{form.dispo_15_08_au_22_08}} <label for="id_dispo_15_08_au_22_08">{{form.dispo_15_08_au_22_08.label}}</label><br/>
+                {{form.dispo_22_08_au_29_08}} <label for="id_dispo_22_08_au_29_08">{{form.dispo_22_08_au_29_08.label}}</label><br/>
+                {{form.dispo_29_08_au_05_09}} <label for="id_dispo_29_08_au_05_09">{{form.dispo_29_08_au_05_09.label}}</label><br/>
+                {{form.dispo_05_09_au_12_09}} <label for="id_dispo_05_09_au_12_09">{{form.dispo_05_09_au_12_09.label}}</label><br/>
+                {{form.dispo_12_09_au_19_09}} <label for="id_dispo_12_09_au_19_09">{{form.dispo_12_09_au_19_09.label}}</label><br/>
+                {{form.dispo_19_09_au_26_09}} <label for="id_dispo_19_09_au_26_09">{{form.dispo_19_09_au_26_09.label}}</label><br/>
+                {{form.dispo_26_09_au_03_10}} <label for="id_dispo_26_09_au_03_10">{{form.dispo_26_09_au_03_10.label}}</label><br/>
+                {{form.dispo_03_10_au_10_10}} <label for="id_dispo_03_10_au_10_10">{{form.dispo_03_10_au_10_10.label}}</label><br/>
+			{{form.dispo_10_10_au_17_10}} <label for="id_dispo_10_10_au_17_10">{{form.dispo_10_10_au_17_10.label}}</label><br/>
+			{{form.dispo_17_10_au_24_10}} <label for="id_dispo_17_10_au_24_10">{{form.dispo_17_10_au_24_10.label}}</label><br/>
+			{{form.dispo_24_10_au_31_10}} <label for="id_dispo_24_10_au_31_10">{{form.dispo_24_10_au_31_10.label}}</label><br/>
 <!--
-		<p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
-		<p class="valeur">{{form.loc_baie}}</p>
+                <p class="directive">{{form.loc_baie.label}} <span class="erreur">{{form.loc_baie.errors}}</span></p>
+                <p class="valeur">{{form.loc_baie}}</p>
 -->
-		<p>
-			{{form.ancien_surveillant}}
-			<label for="id_ancien_surveillant">J'ai déjà participé à la surveillance estivale des phoques de la Baie de Somme mise en place par Picardie Nature</label>
-		</p>
-		
-		</div>
+                <p>
+                        {{form.ancien_participantSE}}
+                        <label for="id_ancien_participantSE">J'ai déjà participé à la surveillance estivale des phoques de la Baie de Somme mise en place par Picardie Nature</label>
+                </p>
+                
+                </div>
 
-		<p>
-			{{form.ancien_soigneur}}
-			<label for="id_ancien_soigneur">Je suis déjà venu(e) assister les soigneurs au Centre de sauvegarde de la faune sauvage de Picardie Nature</label>
-		</p>
-		<a href="javascript:precedent()">Étape précédente</a>
-		<a href="javascript:suivant()">Passer à l'étape suivante</a>
-	</div>
-	<div id="partie4" class="partie">
-		<h2>Formation</h2>
-		<h3>Permis de conduire</h3>
-		<p class="valeur">
-			{{form.permis_b}}<label for="id_permis_b">{{form.permis_b.label}}</label>
-			{{form.vehicule}}<label for="id_vehicule">je possède un véhicule que j'aurais à disposition durant mon séjour</label>
-		</p>
-		<h3>Permis bateau</h3>
-		<p class="valeur">
-			{{form.permis_mer}}<label for="id_permis_mer">{{form.permis_mer.label}}</label>
-			{{form.navig_regulierement}}<label for="id_navig_regulierement">{{form.navig_regulierement.label}}</label>
-		</p>
-		<h3>Navigation en Kayak</h3>
-		<p class="valeur">
-			{{form.kayak_mer}}<label for="id_kayak_mer">{{form.kayak_mer.label}}</label><br/>
-			{{form.kayak_niveau.label}} : {{form.kayak_niveau}} <span class="erreur">{{form.kayak.errors}}</span>
-		</p>
-		<h3>Formations aux premiers secours</h3>
-		<p>
-			{{form.afps}}<label for="id_afps">{{form.afps.label}}</label><br/>
-			{{form.psc1}}<label for="id_psc1">{{form.psc1.label}}</label><br/>
-			{{form.sauveteur_travail}}<label for="id_sauveteur_travail">{{form.sauveteur_travail.label}}</label><br/>
-			{{form.autre.label}} : {{form.autre}} <span class="erreur">{{form.autre.errors}}</span>
-		</p>
-		<a href="javascript:precedent()">Étape précédente</a>
-		<a href="javascript:suivant()">Passer à l'étape suivante</a>
-	</div>
-	<div id="partie5" class="partie">
-		<h3>Animation</h3>
-		<p>
-			{{form.bafa}}<label for="id_bafa">{{form.bafa.label}}</label><br/>
-			{{form.bapaat}}<label for="id_bapaat">{{form.bapaat.label}}</label><br/>
-			{{form.bpjeps}}<label for="id_bpjeps">{{form.bpjeps.label}}</label><br/>
-			{{form.guide_nature}}<label for="id_guide_nature">{{form.guide_nature.label}}</label><br/>
-			{{form.bts_gpn_opt_anim}}<label for="id_bts_gpn_opt_anim">{{form.bts_gpn_opt_anim.label}}</label>
-			{{form.autre_anim.label}} : {{form.autre_anim}} <span class="erreur">{{form.autre_anim.errors}}</span>
+                <p>
+                        {{form.ancien_participantCSFS}}
+                        <label for="id_ancien_participantCSFS">Je suis déjà venu(e) assister les soigneurs au Centre de sauvegarde de la faune sauvage de Picardie Nature</label>
+                </p>
+                <a href="javascript:precedent()">Étape précédente</a>
+                <a href="javascript:suivant()">Passer à l'étape suivante</a>
+        </div>
+        <div id="partie4" class="partie">
+                <h2>Formation</h2>
+                <h3>Permis de conduire</h3>
+                <p class="valeur">
+                        {{form.permis_b}}<label for="id_permis_b">{{form.permis_b.label}}</label>
+                        {{form.vehicule}}<label for="id_vehicule">je possède un véhicule que j'aurais à disposition durant mon séjour</label>
+                </p>
+                <h3>Permis bateau</h3>
+                <p class="valeur">
+                        {{form.permis_mer}}<label for="id_permis_mer">{{form.permis_mer.label}}</label>
+                        {{form.navig_regulierement}}<label for="id_navig_regulierement">{{form.navig_regulierement.label}}</label>
+                </p>
+                <h3>Navigation en Kayak</h3>
+                <p class="valeur">
+                        {{form.kayak_mer}}<label for="id_kayak_mer">{{form.kayak_mer.label}}</label><br/>
+                        {{form.kayak_niveau.label}} : {{form.kayak_niveau}} <span class="erreur">{{form.kayak.errors}}</span>
+                </p>
+                <h3>Formations aux premiers secours</h3>
+                <p>
+                        {{form.afps}}<label for="id_afps">{{form.afps.label}}</label><br/>
+                        {{form.psc1}}<label for="id_psc1">{{form.psc1.label}}</label><br/>
+                        {{form.sauveteur_travail}}<label for="id_sauveteur_travail">{{form.sauveteur_travail.label}}</label><br/>
+                        {{form.autre.label}} : {{form.autre}} <span class="erreur">{{form.autre.errors}}</span>
+                </p>
+                <a href="javascript:precedent()">Étape précédente</a>
+                <a href="javascript:suivant()">Passer à l'étape suivante</a>
+        </div>
+        <div id="partie5" class="partie">
+                <h3>Animation</h3>
+                <p>
+                        {{form.bafa}}<label for="id_bafa">{{form.bafa.label}}</label><br/>
+                        {{form.bapaat}}<label for="id_bapaat">{{form.bapaat.label}}</label><br/>
+                        {{form.bpjeps}}<label for="id_bpjeps">{{form.bpjeps.label}}</label><br/>
+                        {{form.guide_nature}}<label for="id_guide_nature">{{form.guide_nature.label}}</label><br/>
+                        {{form.bts_gpn_opt_anim}}<label for="id_bts_gpn_opt_anim">{{form.bts_gpn_opt_anim.label}}</label>
+                        {{form.autre_anim.label}} : {{form.autre_anim}} <span class="erreur">{{form.autre_anim.errors}}</span>
 
-		</p>
-		<h3>Compétences naturaliste</h3>
-		<p>
-			{{form.mam_marins}}<label for="id_mam_marins">{{form.mam_marins.label}}</label><br/>
-			{{form.oiseaux}}<label for="id_oiseaux">{{form.oiseaux.label}}</label><br/>
-			{{form.autre_competence_naturaliste.label}} : {{form.autre_competence_naturaliste}} 
-			<span class="erreur">{{form.autre_competence_naturaliste.errors}}</span>
+                </p>
+                <h3>Compétences naturaliste</h3>
+                <p>
+                        {{form.mam_marins}}<label for="id_mam_marins">{{form.mam_marins.label}}</label><br/>
+                        {{form.oiseaux}}<label for="id_oiseaux">{{form.oiseaux.label}}</label><br/>
+                        {{form.autre_competence_naturaliste.label}} : {{form.autre_competence_naturaliste}} 
+                        <span class="erreur">{{form.autre_competence_naturaliste.errors}}</span>
 
-		</p>
-		<div class="soins">
-		<h3>Formation vétérinaire</h3>
-		<p>
-			{{form.auxiliaire_sante}}<label for="id_auxiliaire_sante">{{form.auxiliaire_sante.label}}</label><br/>
-			{{form.assistant_veterinaire}}<label for="id_assistant_veterinaire">{{form.assistant_veterinaire.label}}</label><br/>
-			{{form.soigneur_animalier}}<label for="id_soigneur_animalier">{{form.soigneur_animalier.label}}</label><br/>
-			{{form.autre_diplome_soins.label}} : {{form.autre_diplome_soins}}
-		</p>
-		</div>
-		<a href="javascript:precedent()">Étape précédente</a>
-		<a href="javascript:suivant()">Passer à l'étape suivante</a>
-	</div>
-	<div id="partie6" class="partie">
-		<h3>T-Shirt offert</h3>
-		<p>Tout écovolontaire participant à l'une de ces actions, se voit offrir un t-shirt souvenir de son écovolontariat.
-		Pour les préparer, merci de bien vouloir nous indiquer votre taille (S, M, L, XL ou XXL).</p>
-		<p>
-			{{form.tshirt.label}} : {{form.tshirt}}
-		</p>
-		<h3>Adhésion</h3>
-		<p>Pour une question d'assurance, tout écovolontaire participant à l'une de ces actions doit être à jour de son adhésion 2014 à Picardie Nature. </p>
-		<h3>Participation</h3>
-		<p><ul>
-			<li>Les frais de gestion s'élèvent à 50 € </li>
-			<li>Une caution d'un montant de 100 € est demandée, elle est à verser sous forme de chèque. Elle ne sera pas encaissée et vous sera rendue à votre départ de l'écovolontariat.</li>
-			<li>L'association prends en charge les frais d'hébergement  en gîte et de nourriture des écovolontaires participants à ces missions. Ces frais s'élèvent en moyenne à 90€ par personne et par semaine. L'association demande à chaque écovolontaire une participation
-			aux frais d'hébergement et de nourriture de 20 € par semaine.</li>
-		</ul></p>
-		<input type="submit" value="Enregistrer votre candidature"/>
-		<a href="javascript:precedent()">Étape précédente</a>
-	</div>
-	</form>
+                </p>
+                <div class="soins">
+                <h3>Formation vétérinaire</h3>
+                <p>
+                        {{form.auxiliaire_sante}}<label for="id_auxiliaire_sante">{{form.auxiliaire_sante.label}}</label><br/>
+                        {{form.assistant_veterinaire}}<label for="id_assistant_veterinaire">{{form.assistant_veterinaire.label}}</label><br/>
+                        {{form.soigneur_animalier}}<label for="id_soigneur_animalier">{{form.soigneur_animalier.label}}</label><br/>
+                        {{form.autre_diplome_soins.label}} : {{form.autre_diplome_soins}}
+                </p>
+                </div>
+                <a href="javascript:precedent()">Étape précédente</a>
+                <a href="javascript:suivant()">Passer à l'étape suivante</a>
+        </div>
+        <div id="partie6" class="partie">
+                <h3>T-Shirt offert</h3>
+                <p>Tout bénévole participant à l'une de ces actions, se voit offrir un t-shirt souvenir de son séjour en baie de Somme.
+                Pour les préparer, merci de bien vouloir nous indiquer votre taille (S, M, L, XL ou XXL).</p>
+                <p>
+                        {{form.tshirt.label}} : {{form.tshirt}}
+                </p>
+                <h3>Adhésion</h3>
+                <p>Pour une question d'assurance, tout bénévole participant à l'une de ces actions doit être à jour de son adhésion 2015 à Picardie Nature. </p>
+                <h3>Participation</h3>
+                <p><ul>
+                        <li>Les frais de gestion s'élèvent à 50 € </li>
+                        <li>Une caution d'un montant de 100 € est demandée, elle est à verser sous forme de chèque. Elle ne sera pas encaissée et vous sera rendue courant sepctembre, après la saison.</li>
+                        <li>L'association prends en charge les frais d'hébergement  en gîte et de nourriture des bénévoles participants à ces missions. Ces frais s'élèvent en moyenne à 90€ par personne et par semaine. L'association demande à chaque écovolontaire une participation                   aux frais d'hébergement et de nourriture de 20 € par semaine.</li>
+                </ul></p>
+                <input type="submit" value="Enregistrer votre candidature"/>
+                <a href="javascript:precedent()">Étape précédente</a>
+        </div>
+        </form>
 </div>
 
 <script>
 var g_partie = 0;
 
 function precedent() {
-	if (g_partie > 1) {
-		jQuery("#partie"+g_partie).hide();
-		g_partie = g_partie - 1;
-		jQuery("#partie"+g_partie).show();
-	}
+        if (g_partie > 1) {
+                jQuery("#partie"+g_partie).hide();
+                g_partie = g_partie - 1;
+                jQuery("#partie"+g_partie).show();
+        }
 }
 
 function suivant() {
-	var ok = false;
-	if (g_partie == 2) {
-		if (document.getElementById('id_participation_csfs').checked) {
-			jQuery(".soins").show();
-			ok = true;
-		}
-		if (document.getElementById('id_participation_protection').checked) {
-			jQuery(".protection").show();
-			ok = true;
-		}
-		if (!ok) {
-			alert('Vous devez choisir au moins une mission');
-			return;
-		}
-	}
-	jQuery("#partie"+g_partie).hide();
-	g_partie = g_partie + 1;
-	jQuery("#partie"+g_partie).show();
+        var ok = false;
+        if (g_partie == 2) {
+                if (document.getElementById('id_participation_csfs').checked) {
+                        jQuery(".soins").show();
+                        ok = true;
+                }
+                if (document.getElementById('id_participation_protection').checked) {
+                        jQuery(".protection").show();
+                        ok = true;
+                }
+                if (!ok) {
+                        alert('Vous devez choisir au moins une mission');
+                        return;
+                }
+        }
+        jQuery("#partie"+g_partie).hide();
+        g_partie = g_partie + 1;
+        jQuery("#partie"+g_partie).show();
 }
 
 window.onload = function() {
-	jQuery("#partie1").show();
-	g_partie = 1;
+        jQuery("#partie1").show();
+        g_partie = 1;
 }
 </script>
 {% endblock %}
