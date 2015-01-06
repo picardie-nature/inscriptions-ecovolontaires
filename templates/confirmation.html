@@ -1,6 +1,6 @@
 {% extends "main.html" %}
 {% block main %}
-<h1>Inscription écovolontaire - confirmation</h1>
+<h1>Inscription bénévole phoques baie de Somme - confirmation</h1>
 {% if not login %}
 	<form method="post" action="/confirmation/">
 		<p class="directive">Adresse email</p>
@@ -13,7 +13,7 @@
 	<a href="/mot_de_passe/">Mot de passe perdu ?</a>
 {% else %}
 	<a href="/fermer/">Fermer</a>
-	<p>Vous avez été sélectionné(e) pour participer aux missions d'écovolontariat phoques qui se tiendront au cours de l'été 2013: du 8 juin au 31 août pour la surveillance estivale et dès le 8 juin pour le centre de sauvegarde de la faune sauvage.</p>
+	<p>Vous avez été sélectionné(e) pour participer aux missions de bénévolat pour les phoques qui se tiendront au cours de l'été 2015: du 6 juin au 29 août pour la surveillance estivale et dès le 6 juin pour le centre de sauvegarde de la faune sauvage.</p>
 
 	<hr/>
 	<h2>Dates retenues</h2>
@@ -149,16 +149,16 @@
 			<input type="hidden" name="email" value="{{fiche.email}}">
 			<input type="hidden" name="last_name" value="{{fiche.nom}}">
 			<input type="hidden" name="first_name" value="{{fiche.prenom}}">
-			<input type="hidden" name="return" value="http://ecovolontaires.picardie-nature.org/confirmation_fin"/>
+			<input type="hidden" name="return" value="http://benevoles.bds.picardie-nature.org/confirmation_fin"/>
 			<input type="submit" value="Payer">
 		</form>
 		<h3>Par chèque</h3>
-		<p>Le chèque doit être libellé à l'ordre de <b>Picardie Nature</b>, veuillez indiquer au dos, vos prénom et nom et indiquer "ecovolontariat phoques". </p>
+		<p>Le chèque doit être libellé à l'ordre de <b>Picardie Nature</b>, veuillez indiquer au dos, vos prénom et nom et indiquer "bénévolat phoques". </p>
 
 		<p>Il doit être envoyé à :</p>
 		<address>
 		PICARDIE NATURE<br/>
-		ECOVOLONTARIAT PHOQUES<br/>
+		BENEVOLAT PHOQUES<br/>
 		1 rue de CROŶ<br/>
 		BP 70010<br/>
 		80097 Amiens cedex 3<br/>

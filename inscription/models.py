@@ -120,7 +120,7 @@ def envoyer_mail_confirmation(modeladmin, request, queryset):
 		u = User(candidat.fiche.user_id)
 		candidat.date_dernier_envoi_mail = datetime.now()
 		candidat.save()
-		send_mail(u"Confirmation de participation à l'écovolontariat phoques",u"""Confirmation de participation au bénévolat pour les phoques
+		send_mail(u"Confirmation de participation au bénévolat phoques",u"""Confirmation de participation au bénévolat pour les phoques
 
 Vous avez été sélectionné(e) pour participer aux cessions de bénévolat pour les phoques qui se tiendront au cours de l'été 2015.
 

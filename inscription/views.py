@@ -120,7 +120,7 @@ def documents(request):
 
 
 def index(request):
-	if (date.today() < date(2015,4,9)):
+	if (date.today() < date(2015,3,9)):
 		if request.method == 'POST':
 			fiche = inscription.models.Fiche()
 			f = inscription.models.FicheForm(request.POST, instance=fiche)
@@ -135,11 +135,11 @@ def index(request):
 				login = fiche.email				
 				mot_de_passe = commands.getoutput('pwgen -1')
 				u = User.objects.create_user(login,login,mot_de_passe)
-				u.email_user(u'Votre inscription comme écovolontaire',
+				u.email_user(u'Votre inscription comme bénévole',
 						"""Votre inscription est enregistrée,
 
 Pour la finaliser il vous reste a envoyer les documents administratifs.
-Rendez-vous sur : http://ecovolontaires.picardie-nature.org/documents/
+Rendez-vous sur : http://benevoles.bds.picardie-nature.org/documents/
 Votre mot de passe est : %s
 
 
@@ -150,13 +150,13 @@ Votre mot de passe est : %s
 
 				admins = User.objects.filter(username='admin')
 				for admin in admins:
-					sujet = u'Nouvel écovolontaire';
-					msg = u"""Nouvel écovolontaire enregistré : %s %s
+					sujet = u'Nouveau bénévole mission phoques';
+					msg = u"""Nouvel bénévole mission phoques enregistré : %s %s
 
 Adresse email : %s
 Mot de passe : %s
 
-Pour le suivi http://ecovolontaires.picardie-nature.org/admin
+Pour le suivi http://benevoles.bds.picardie-nature.org/admin
 
 					""" % (fiche.nom, fiche.prenom, fiche.email, mot_de_passe)
 					msg.encode('u8')
