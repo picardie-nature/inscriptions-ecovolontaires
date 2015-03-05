@@ -8,6 +8,7 @@ from datetime import datetime,date
 from os import listdir,mkdir,path,environ
 import commands
 from django.core.mail import send_mail
+import sys
 
 def fermer(request):
 	logout(request)
@@ -64,7 +65,7 @@ def mot_de_passe(request):
 
 Votre nouveau mot de passe est : %s
 
-""" % (mot_de_passe), 'support@picardie-nature.org', [u.email])
+""" % (mot_de_passe), 'support-vbds@picardie-nature.org', [u.email])
 			msg = "Nouveau mot de passe envoyé"
 		else:
 			msg = "Adresse inconnue"
@@ -96,7 +97,8 @@ def documents(request):
 				fic = request.FILES['fic']
 				if not path.exists(chemin):
 					mkdir(chemin)
-				f = open('%s/%s'%(chemin, fic.name), 'wb+')
+				filename = fic.name.encode('utf8')
+				f = open('%s/%s'%(chemin, filename), 'wb+')
 				for part in fic.chunks():
 					f.write(part)
 				f.close()
