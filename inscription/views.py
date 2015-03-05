@@ -97,7 +97,8 @@ def documents(request):
 				fic = request.FILES['fic']
 				if not path.exists(chemin):
 					mkdir(chemin)
-				f = open('%s/%s'%(chemin, fic.name.encode(sys.getfilesystemencoding()), 'wb+')
+				filename = fic.name.encode('utf8')
+				f = open('%s/%s'%(chemin, filename), 'wb+')
 				for part in fic.chunks():
 					f.write(part)
 				f.close()
