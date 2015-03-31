@@ -158,22 +158,29 @@ class CandidatRetenu(models.Model):
 	)
 
 	fiche = models.ForeignKey(Fiche, unique=True)	
-	retenu_07_06_au_14_06 = models.CharField("Présent du 07-06 au 14-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_14_06_au_21_06 = models.CharField("Présent du 14-06 au 21-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_21_06_au_28_06 = models.CharField("Présent du 21-06 au 28-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_28_06_au_05_07 = models.CharField("Présent du 28-06 au 05-06", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_05_07_au_12_07 = models.CharField("Présent du 05-07 au 12-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_12_07_au_19_07 = models.CharField("Présent du 12-07 au 19-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_19_07_au_26_07 = models.CharField("Présent du 19-07 au 26-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_26_07_au_02_08 = models.CharField("Présent du 26-07 au 02-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_02_08_au_09_08 = models.CharField("Présent du 02-08 au 09-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_09_08_au_16_08 = models.CharField("Présent du 09-08 au 16-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_16_08_au_23_08 = models.CharField("Présent du 16-08 au 23-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_23_08_au_30_08 = models.CharField("Présent du 23-08 au 30-08", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_30_08_au_06_09 = models.CharField("Présent du 30-08 au 06-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_06_09_au_13_09 = models.CharField("Présent du 06-09 au 13-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_13_09_au_20_09 = models.CharField("Présent du 13-09 au 20-09", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_20_09_au_27_09 = models.CharField("Présent du 20-09 au 27-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_06_06_au_13_06 = models.CharField("Présent du 06-06 au 13-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_13_06_au_20_06 = models.CharField("Présent du 13-06 au 20-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_20_06_au_27_06 = models.CharField("Présent du 20-06 au 27-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_27_06_au_04_07 = models.CharField("Présent du 27-06 au 04-06", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_04_07_au_11_07 = models.CharField("Présent du 04-07 au 11-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_11_07_au_18_07 = models.CharField("Présent du 11-07 au 18-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_18_07_au_25_07 = models.CharField("Présent du 18-07 au 25-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_25_07_au_01_08 = models.CharField("Présent du 25-07 au 01-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_01_08_au_08_08 = models.CharField("Présent du 01-08 au 08-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_08_08_au_15_08 = models.CharField("Présent du 08-08 au 15-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_15_08_au_22_08 = models.CharField("Présent du 15-08 au 22-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_22_08_au_29_08 = models.CharField("Présent du 22-08 au 29-08", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_29_08_au_05_09 = models.CharField("Présent du 29-08 au 05-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_05_09_au_12_09 = models.CharField("Présent du 05-09 au 12-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_12_09_au_19_09 = models.CharField("Présent du 12-09 au 19-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_19_09_au_26_09 = models.CharField("Présent du 19-09 au 26-09", max_length=5, choices=CHOIX_MISSION, blank=True)
+	
+	retenu_26_09_au_03_10 = models.CharField("Présent du 26-10 au 03-10", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_03_10_au_10_10 = models.CharField("Présent du 03-10 au 10-10", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_10_10_au_17_10 = models.CharField("Présent du 10-10 au 17-10", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_17_10_au_24_10 = models.CharField("Présent du 17-10 au 24-10", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_24_10_au_31_10 = models.CharField("Présent du 24-10 au 31-10", max_length=5, choices=CHOIX_MISSION, blank=True)
+
 	date_validation = models.DateTimeField("Date validation", blank=True,null=True)
 	date_confirmation = models.DateTimeField("Date confirmation", blank=True,null=True)
 	frais_inscription = models.IntegerField('Frais inscription', default=50) # 50 €
@@ -184,7 +191,7 @@ class CandidatRetenu(models.Model):
 	adhesion = models.BooleanField("Adhésion confirmée")
 
 def calcul_frais(sender, instance, **kwargs):
-	semaines = ['retenu_07_06_au_14_06', 'retenu_14_06_au_21_06', 'retenu_21_06_au_28_06', 'retenu_28_06_au_05_07', 'retenu_05_07_au_12_07', 'retenu_12_07_au_19_07', 'retenu_19_07_au_26_07', 'retenu_26_07_au_02_08', 'retenu_02_08_au_09_08', 'retenu_09_08_au_16_08', 'retenu_16_08_au_23_08', 'retenu_23_08_au_30_08', 'retenu_30_08_au_06_09', 'retenu_06_09_au_13_09', 'retenu_13_09_au_20_09', 'retenu_20_09_au_27_09']
+	semaines = ['retenu_06_06_au_13_06', 'retenu_13_06_au_20_06', 'retenu_20_06_au_27_06', 'retenu_27_06_au_04_07', 'retenu_04_07_au_11_07', 'retenu_11_07_au_18_07', 'retenu_18_07_au_25_07', 'retenu_25_07_au_01_08', 'retenu_01_08_au_08_08', 'retenu_08_08_au_15_08', 'retenu_15_08_au_22_08', 'retenu_22_08_au_29_08', 'retenu_29_08_au_05_09', 'retenu_05_09_au_12_09', 'retenu_12_09_au_19_09', 'retenu_19_09_au_26_09','retenu_26_09_au_03_10','retenu_03_10_au_10_10','retenu_10_10_au_17_10','retenu_17_10_au_24_10','retenu_24_10_au_31_10']
 	instance.frais_inscription = 50
 	instance.frais_hebergement = 0
 	cout_semaine = 20
