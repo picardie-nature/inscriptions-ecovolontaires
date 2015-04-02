@@ -165,7 +165,7 @@ class CandidatRetenu(models.Model):
 	retenu_04_07_au_11_07 = models.CharField("Présent du 04-07 au 11-07", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_11_07_au_18_07 = models.CharField("Présent du 11-07 au 18-07", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_18_07_au_25_07 = models.CharField("Présent du 18-07 au 25-07", max_length=5, choices=CHOIX_MISSION, blank=True)
-	retenu_25_07_au_01_08 = models.CharField("Présent du 25-07 au 01-07", max_length=5, choices=CHOIX_MISSION, blank=True)
+	retenu_25_07_au_01_08 = models.CharField("Présent du 25-07 au 01-08", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_01_08_au_08_08 = models.CharField("Présent du 01-08 au 08-08", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_08_08_au_15_08 = models.CharField("Présent du 08-08 au 15-08", max_length=5, choices=CHOIX_MISSION, blank=True)
 	retenu_15_08_au_22_08 = models.CharField("Présent du 15-08 au 22-08", max_length=5, choices=CHOIX_MISSION, blank=True)
