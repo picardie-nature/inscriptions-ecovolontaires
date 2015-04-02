@@ -67,6 +67,13 @@ Votre nouveau mot de passe est : %s
 
 """ % (mot_de_passe), 'support-vbds@picardie-nature.org', [u.email])
 			msg = "Nouveau mot de passe envoyé"
+
+			send_mail(u"Nouveau mot de passe pour %s"%(u.email),"""Bonjour,
+
+Un nouveau mot de passe a été envoyé à %s
+Mot de passe : %s
+
+"""%(u.email,mot_de_passe), 'support-vbds@picardie-nature.org', 'support-vbds@picardie-nature.org')
 		else:
 			msg = "Adresse inconnue"
 	
