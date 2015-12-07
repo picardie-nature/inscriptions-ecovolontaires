@@ -61,7 +61,7 @@ def mot_de_passe(request):
 			mot_de_passe = commands.getoutput('pwgen -1')
 			u.set_password(mot_de_passe)
 			u.save()
-			send_mail(u"Votre nouveau mot de passe","""Bonjour,
+			send_mail(u"Votre nouveau mot de passe",u"""Bonjour,
 
 Votre nouveau mot de passe est : %s
 
@@ -73,7 +73,7 @@ Votre nouveau mot de passe est : %s
 Un nouveau mot de passe a été envoyé à %s
 Mot de passe : %s
 
-"""%(u.email,mot_de_passe), 'support-vbds@picardie-nature.org', 'support-vbds@picardie-nature.org')
+"""%(u.email,mot_de_passe), 'support-vbds@picardie-nature.org', ['support-vbds@picardie-nature.org'])
 		else:
 			msg = "Adresse inconnue"
 	
