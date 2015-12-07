@@ -129,7 +129,7 @@ def documents(request):
 
 
 def index(request):
-	if (date.today() < date(2015,3,9)):
+	if (date.today() < date(2016,3,1)):
 		if request.method == 'POST':
 			fiche = inscription.models.Fiche()
 			f = inscription.models.FicheForm(request.POST, instance=fiche)
