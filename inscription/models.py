@@ -74,6 +74,7 @@ class Fiche(models.Model):
 
 	duree_n_semaine = models.IntegerField("Nombre de semaines de participation (à partir de 2 pour la surveillance estivale et maximum 2 pour le centre de sauvegarde)", max_length=2, blank=True)
 	ancien_surveillant = models.BooleanField("J'ai déjà participé à ces actions")
+	ancien_soigneur = models.BooleanField("Déjà été soigneur")
 	adherent_autre_asso = models.CharField("Adhérent dans d'autres associations ?", max_length=200, blank=True)
 	permis_b = models.BooleanField("Je suis titulaire du Permis B")
 	vehicule = models.BooleanField("Je possède un véhicule que j'aurai à disposition pour la mission")
