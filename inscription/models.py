@@ -101,7 +101,8 @@ class Fiche(models.Model):
 	autre_diplome_soins = models.CharField("J'ai suivi une autre formation en soins animaliers", max_length=200, blank=True)
 	user_id = models.IntegerField("Id utilisateur", blank=True)
 	tshirt = models.CharField("T-Shirt", max_length=3, choices=CHOIX_TSHIRT, blank=True)
-
+	dispo_soins_nb_semaine = models.IntegerField("Nombre de semaines", blank=True)
+	
 	class Meta:
 		ordering = ['nom','prenom']
 
