@@ -190,7 +190,7 @@ class CandidatRetenu(models.Model):
 	adhesion = models.BooleanField("Adhésion confirmée")
 
 def calcul_frais(sender, instance, **kwargs):
-	semaines = ['retenu_06_06_au_13_06', 'retenu_13_06_au_20_06', 'retenu_20_06_au_27_06', 'retenu_27_06_au_04_07', 'retenu_04_07_au_11_07', 'retenu_11_07_au_18_07', 'retenu_18_07_au_25_07', 'retenu_25_07_au_01_08', 'retenu_01_08_au_08_08', 'retenu_08_08_au_15_08', 'retenu_15_08_au_22_08', 'retenu_22_08_au_29_08', 'retenu_29_08_au_05_09', 'retenu_05_09_au_12_09', 'retenu_12_09_au_19_09', 'retenu_19_09_au_26_09','retenu_26_09_au_03_10','retenu_03_10_au_10_10','retenu_10_10_au_17_10','retenu_17_10_au_24_10','retenu_24_10_au_31_10']
+	semaines = ['retenu_14_05_au_21_05','retenu_21_05_au_28_05','retenu_28_05_au_04_06','retenu_04_06_au_11_06','retenu_11_06_au_18_06','retenu_18_06_au_25_06','retenu_25_06_au_02_07','retenu_02_07_au_09_07','retenu_09_07_au_16_07','retenu_16_07_au_23_07','retenu_23_07_au_30_07','retenu_30_07_au_06_08','retenu_06_08_au_13_08','retenu_13_08_au_20_08','retenu_20_08_au_27_08','retenu_27_08_au_03_09','retenu_03_09_au_10_09','retenu_10_09_au_17_09','retenu_17_09_au_24_09','retenu_24_09_au_01_10','retenu_01_10_au_08_10','retenu_08_10_au_15_10','retenu_15_10_au_22_10','retenu_22_10_au_29_10']
 	instance.frais_inscription = 50
 	instance.frais_hebergement = 0
 	cout_semaine = 20
